@@ -1,0 +1,6 @@
+_site
+.sass-cache
+/.Ulysses-favorites.plist
+/.Ulysses-Group.plist
+/Gemfile
+/Gemfile.lock
