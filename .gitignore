@@ -1,6 +1,10 @@
+# Jekyll
 _site
-.sass-cache
-/.Ulysses-favorites.plist
-/.Ulysses-Group.plist
-/Gemfile
-/Gemfile.lock
+.sass*
+Gemfile*
+
+# OS
+.DS_Store
+
+# Other
+.Ulysses*
