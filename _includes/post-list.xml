@@ -1,0 +1,18 @@
+<entry>
+    <title>{{ post.title }}</title>
+    {% assign author = site.data.authors[page.author] %}
+    {% if author %}
+    <author>
+        <name>{{ author.name }}</name>
+        <uri>https://twitter.com/{{ author.twitter }}</uri>
+    </author>
+    {% endif %}
+    <link href="{{ site.url }}{{ post.url }}"/>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <id>{{ site.url }}{{ post.url }}</id>
+    <summary type="html">
+        <![CDATA[
+            {% if post.description %}{{ post.description | escape }}{% else %}{{ post.content | escape }}{% endif %}
+        ]]>
+    </summary>
+</entry>

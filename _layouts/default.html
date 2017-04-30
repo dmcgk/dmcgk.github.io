@@ -1,0 +1,27 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+  <head>
+  	<title>{{ page.title | default: site.title }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  {% seo title=false %}
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name"><a href="/">{{ site.title | default: site.github.repository_name }}</a></h1>
+      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+    </section>
+    <section class="main-content">
+      {{ content }}
+
+      <footer class="site-footer">
+        &copy; {{ site.time | date: '%Y' }} @dmcgk
+      </footer>
+    </section>
+  </body>
+</html>

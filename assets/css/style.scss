@@ -1,0 +1,27 @@
+---
+layout: data
+---
+
+@import "{{ site.theme }}";
+
+/* Local style overrides */
+
+body { 
+	font-family: "Source Sans Pro", sans-serif; 
+	color: black; 
+}
+
+.page-header { 
+	color: grey; 
+	background-color: white; 
+	background-image: none; 
+}
+
+.page-header a {
+	color: grey;
+	text-decoration: none;
+}
+
+.site-footer, .pagination {
+	text-align: center;
+}

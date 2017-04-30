@@ -1,0 +1,7 @@
+---
+layout: feed
+redirect_from: /feed/
+---
+{% for post in site.posts limit:site.paginate %}
+    {% include post-list.xml %}
+{% endfor %}

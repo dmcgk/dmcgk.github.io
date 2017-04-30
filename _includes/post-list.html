@@ -1,0 +1,24 @@
+<!-- Post title -->
+<h2>
+    <a href="{{ post.url }}">{{ post.title | replace: ' and ', ' & ' }}</a>
+</h2>
+
+<!-- Post excerpt -->
+<p>
+  {% if post.description %}
+    {% assign post_text = post.description | strip_html %}
+    {{ post_text }} 
+  {% else %}
+    {% assign raw_text = post.content | strip_html %}
+    {% assign post_text = raw_text | truncatewords:100 %}
+    {{ post_text }} 
+	{% if raw_text.size > post_text.size %}
+	  <a href="{{ post.url }}">(more)</a>
+	{% endif %}
+  {% endif %}
+</p>
+
+<!-- Post date -->
+<h4>
+{{ post.date | date: '%-d %B %Y' }}
+</h4>

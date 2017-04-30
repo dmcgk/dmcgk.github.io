@@ -1,0 +1,13 @@
+---
+layout: index
+---
+
+{% for post in paginator.posts %}
+  {% include post-list.html %}
+{% endfor %}
+
+{% if paginator.posts.count > site.paginate %}
+  <section>
+    {% include paginate.html %}
+  </section>
+{% endif %}

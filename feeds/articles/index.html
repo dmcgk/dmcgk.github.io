@@ -1,0 +1,8 @@
+---
+layout: feed
+---
+{% for post in site.posts limit:site.paginate %}
+	{% if post.content.size > 140 %}
+    	{% include post-list.xml %}
+	{% endif %}
+{% endfor %}
