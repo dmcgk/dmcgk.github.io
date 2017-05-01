@@ -1,9 +1,11 @@
 <entry>
     {% if post%}
-        {% assign raw = post.content | strip_html %}
-        {% if raw.size > site.micro_length %}
-            <title>{{ post.title }}</title>
-        {% endif %}
+        <title>
+            {% assign raw = post.content | strip_html %}
+            {% if raw.size > site.micro_length %}
+                {{ post.title }}
+            {% endif %}
+        </title>
     {% endif %}
     {% assign author = site.data.authors[page.author] %}
     {% if author %}
@@ -16,11 +18,11 @@
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <id>{{ site.url }}{{ post.url }}</id>
     {% if post.description %}
-       <summary>
-            {{ post.description | escape }}
+       <summary type="html">
+            {{ post.description | xml_escape }}
         </summary>
     {% endif %}
-    <content>
-        {{ post.content | escape }}
+    <content type="html">
+        {{ post.content | xml_escape }}
     </content>
 </entry>
