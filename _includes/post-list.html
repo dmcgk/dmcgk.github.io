@@ -1,7 +1,14 @@
 <!-- Post title -->
-<h2>
-    <a href="{{ post.url }}">{{ post.title | replace: ' and ', ' & ' }}</a>
-</h2>
+{% if post.article %}
+  <h2>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+  </h2>
+{% endif %}
+
+<!-- Post date -->
+<h4>
+  <a href="{{ post.url }}">{{ post.date | date: '%-d %B %Y %H:%M' }}</a>
+</h4>
 
 <!-- Post excerpt -->
 <p>
@@ -18,7 +25,7 @@
   {% endif %}
 </p>
 
-<!-- Post date -->
-<h4>
-{{ post.date | date: '%-d %B %Y' }}
-</h4>
+<!-- Article separator -->
+{% if post.article %}
+  <hr />
+{% endif %}

@@ -5,23 +5,31 @@ layout: compress
 <html lang="{{ site.lang }}">
   <head>
   	<title>{{ page.title | default: site.title }}</title>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	  {% seo title=false %}
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% assign author = site.data.authors[site.author] %}
+    {% if author %}
+      {% for url in author.urls %}
+        <link rel="me" href="{{ url }}"/>
+      {% endfor %}
+    {% endif %}
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name"><a href="/">{{ site.title | default: site.github.repository_name }}</a></h1>
-      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+      <h2 class="project-name"><a href="/">{{ site.title | default: site.github.repository_name }}</a></h2>
+      {% if post %}
+          {% if post.category %}
+            <h3 class="project-tagline"><a href="/{{ post.category }}">{{ post.category }}</a></h3>
+          {% endif %}
+      {% endif %}
     </section>
     <section class="main-content">
       {{ content }}
-
-      <footer class="site-footer">
-        &copy; {{ site.time | date: '%Y' }} @dmcgk
-      </footer>
     </section>
+    <footer class="site-footer">
+      <p>&copy; {{ site.time | date: '%Y' }} @dmcgk</p>
+    </footer>
   </body>
 </html>
