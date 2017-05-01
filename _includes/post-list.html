@@ -1,5 +1,6 @@
 <!-- Post title -->
-{% if post.article %}
+{% assign raw = post.content | strip_html %}
+{% if raw.size > site.micro_length %}
   <h2>
     <a href="{{ post.url }}">{{ post.title }}</a>
   </h2>
@@ -16,12 +17,11 @@
     {% assign post_text = post.description | strip_html %}
     {{ post_text }} 
   {% else %}
-    {% assign raw_text = post.content | strip_html %}
-    {% assign post_text = raw_text | truncatewords:100 %}
+    {% assign post_text = raw | truncatewords:100 %}
     {{ post_text }} 
-	{% if raw_text.size > post_text.size %}
-	  <a href="{{ post.url }}">(more)</a>
-	{% endif %}
+  	{% if raw.size > post_text.size %}
+  	  <a href="{{ post.url }}">(more)</a>
+  	{% endif %}
   {% endif %}
 </p>
 

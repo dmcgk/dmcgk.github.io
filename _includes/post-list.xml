@@ -1,11 +1,16 @@
 <entry>
-    <title>{{ post.title }}</title>
+    {% if post%}
+        {% assign raw = post.content | strip_html %}
+        {% if raw.size > site.micro_length %}
+            <title>{{ post.title }}</title>
+        {% endif %}
+    {% endif %}
     {% assign author = site.data.authors[page.author] %}
     {% if author %}
-    <author>
-        <name>{{ author.name }}</name>
-        <uri>https://twitter.com/{{ author.twitter }}</uri>
-    </author>
+        <author>
+            <name>{{ author.name }}</name>
+            <uri>https://twitter.com/{{ author.twitter }}</uri>
+        </author>
     {% endif %}
     <link rel="alternate" href="{{ site.url }}{{ post.url }}"/>
     <updated>{{ post.date | date_to_xmlschema }}</updated>

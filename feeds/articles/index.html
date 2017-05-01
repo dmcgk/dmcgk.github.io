@@ -2,7 +2,8 @@
 layout: feed
 ---
 {% for post in site.posts limit:site.paginate %}
-	{% if post.content.size > 140 %}
-    	{% include post-list.xml %}
+	{% assign raw = post.content | strip_html %}
+	{% if raw.size > site.micro_length %}
+		{% include post-list.xml %}
 	{% endif %}
 {% endfor %}

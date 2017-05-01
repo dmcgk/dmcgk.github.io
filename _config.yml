@@ -6,6 +6,7 @@ theme: jekyll-theme-cayman
 lang: en
 paginate: 20
 paginate_path: '/archive/:num/'
+micro_length: 200
 
 # Contact settings
 twitter:
