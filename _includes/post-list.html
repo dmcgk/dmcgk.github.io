@@ -1,14 +1,24 @@
-<!-- Post title -->
 {% assign raw = post.content | strip_html %}
+
 {% if raw.size > site.micro_length %}
+  {% assign article_post = true %}
+
+  <!-- Article separator -->
+  {% unless forloop.first %}
+    <hr />
+  {% endunless %}
+
+  <!-- Article title -->
   <h2>
     <a href="{{ post.url }}">{{ post.title }}</a>
   </h2>
+{% else %}
+  {% assign article_post = false %}
 {% endif %}
 
 <!-- Post date -->
 <h4>
-  <a href="{{ post.url }}">{{ post.date | date: '%-d %B %Y %H:%M' }}</a>
+  <a href="{{ post.url }}">{{ post.date | date: '%-d %B %Y, %H:%M' }}</a>
 </h4>
 
 <!-- Post excerpt -->
@@ -26,6 +36,6 @@
 </p>
 
 <!-- Article separator -->
-{% if post.article %}
+{% if article_post %}
   <hr />
 {% endif %}
