@@ -3,7 +3,7 @@ title: fernseed
 url: https://fernseed.org
 permalink: /:slug/
 theme: jekyll-theme-cayman
-lang: en_GB
+lang: en
 paginate: 20
 paginate_path: '/archive/:num/'
 
@@ -41,6 +41,6 @@ jekyll-mentions:
   base_url: 'https://twitter.com'
 compress_html:
   comments: all
-  clippings: all
-  endings: all
-  startings: all
+  clippings: none
+  endings: none
+  startings: none
