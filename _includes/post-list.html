@@ -3,11 +3,6 @@
 {% if raw.size > site.micro_length %}
   {% assign article_post = true %}
 
-  <!-- Article separator -->
-  {% unless forloop.first %}
-    <hr />
-  {% endunless %}
-
   <!-- Article title -->
   <h2>
     <a href="{{ post.url }}">{{ post.title }}</a>
