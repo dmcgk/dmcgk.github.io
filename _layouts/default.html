@@ -22,10 +22,8 @@ layout: compress
   <body>
     <section class="page-header">
       <h2 class="project-name"><a href="/">{{ site.title | default: site.github.repository_name }}</a></h2>
-      {% if post %}
-          {% if post.category %}
-            <h3 class="project-tagline"><a href="/{{ post.category }}">{{ post.category }}</a></h3>
-          {% endif %}
+      {% if page.category %}
+        <h3 class="project-tagline"><a href="/{{ page.category }}">{{ page.category }}</a></h3>
       {% endif %}
     </section>
     <section class="main-content">

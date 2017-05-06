@@ -2,17 +2,10 @@
 
 {% if raw.size > site.micro_length %}
   {% assign article_post = true %}
-  
   <!-- Begin article excerpt -->
   <div class="article-excerpt">
-
-  <!-- Article title -->
-  <h2>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-  </h2>
 {% else %}
   {% assign article_post = false %}
-
   <!-- Begin micro post excerpt -->
   <div class="micro-excerpt">
 {% endif %}
@@ -25,10 +18,10 @@
 <!-- Post excerpt -->
 <p>
   {% if post.description %}
-    {% assign post_text = post.description | strip_html %}
+    {% assign post_text = post.description %}
     {{ post_text }} 
   {% else %}
-    {% assign post_text = raw | truncatewords:100 %}
+    {% assign post_text = post.content | truncatewords:100 %}
     {{ post_text }} 
   	{% if raw.size > post_text.size %}
   	  <a href="{{ post.url }}">(more)</a>
