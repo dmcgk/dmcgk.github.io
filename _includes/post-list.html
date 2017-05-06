@@ -2,6 +2,11 @@
 
 {% if raw.size > site.micro_length %}
   {% assign article_post = true %}
+  
+  <!-- Article separator -->
+  {% unless prior_article_post %}
+    <hr />
+  {% endunless %}
 
   <!-- Article title -->
   <h2>
@@ -32,5 +37,8 @@
 
 <!-- Article separator -->
 {% if article_post %}
+  {% assign prior_article_post = true %}
   <hr />
+{% else %}
+  {% assign prior_article_post = false %}
 {% endif %}
