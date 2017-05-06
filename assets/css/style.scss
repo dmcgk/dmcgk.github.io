@@ -6,21 +6,36 @@ layout: data
 
 /* Local style overrides */
 
+{% assign site-colour = "crimson" %}
+{% assign site-font = "Source Sans Pro" %}
+
+@mixin all-headings($from: 1, $to: 6) {
+  @for $i from $from through $to {
+    h#{$i}{
+      @content
+    }
+  }
+}
+
+@include all-headings(){
+  @extend %headings !optional;
+}
+
 body { 
-	font-family: "Source Sans Pro", sans-serif; 
+	font-family: {{ site-font }}, sans-serif; 
 	color: black; 
 }
 
 .page-header { 
-	color: grey; 
 	background-color: white; 
 	background-image: none; 
 }
 
-.page-header a {
-	color: grey;
-	text-decoration: none;
+a {
+	color: {{ site-colour }};
 }
+
+.main-content %headings { color: {{ site-colour }}; }
 
 .site-footer, .pagination {
 	text-align: center;
