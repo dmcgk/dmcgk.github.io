@@ -7,8 +7,11 @@ layout: compress
   	<title>{{ page.title | default: site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	  {% seo title=false %}
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" type="text/css">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="alternate" href="/feeds/articles.xml" type="application/atom+xml" title="Article Posts" />
+    <link rel="alternate" href="/feeds/micro.xml" type="application/atom+xml" title="Micro Posts" />
+    <link rel="alternate" href="/feeds/full.xml" type="application/atom+xml" title="All Posts" />
     {% assign author = site.data.authors[site.author] %}
     {% if author %}
       {% for url in author.urls %}
