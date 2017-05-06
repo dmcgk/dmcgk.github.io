@@ -3,10 +3,8 @@
 {% if raw.size > site.micro_length %}
   {% assign article_post = true %}
   
-  <!-- Article separator -->
-  {% unless prior_article_post %}
-    <hr />
-  {% endunless %}
+  <!-- Begin article excerpt -->
+  <div class="article-excerpt">
 
   <!-- Article title -->
   <h2>
@@ -14,6 +12,9 @@
   </h2>
 {% else %}
   {% assign article_post = false %}
+
+  <!-- Begin micro post excerpt -->
+  <div class="micro-excerpt">
 {% endif %}
 
 <!-- Post date -->
@@ -35,10 +36,5 @@
   {% endif %}
 </p>
 
-<!-- Article separator -->
-{% if article_post %}
-  {% assign prior_article_post = true %}
-  <hr />
-{% else %}
-  {% assign prior_article_post = false %}
-{% endif %}
+<!-- Close separators -->
+</div>
