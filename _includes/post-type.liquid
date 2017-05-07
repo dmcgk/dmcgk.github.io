@@ -1,0 +1,11 @@
+{% if post %}
+	{% assign raw = post.content | strip_html %}
+{% else %}
+	{% assign raw = page.content | strip_html %}
+{% endif %}
+
+{% if raw.size > site.micro_length %}
+  {% assign article_post = true %}
+{% else %}
+  {% assign article_post = false %}
+{% endif %}

@@ -1,12 +1,11 @@
+{% include post-type.liquid %}
+
 <entry>
-    {% if post%}
-        <title>
-            {% assign raw = post.content | strip_html %}
-            {% if raw.size > site.micro_length %}
-                {{ post.title }}
-            {% endif %}
-        </title>
-    {% endif %}
+    <title>
+        {% if article_post %}
+            {{ post.title }}
+        {% endif %}
+    </title>
     {% assign author = site.data.authors[page.author] %}
     {% if author %}
         <author>
