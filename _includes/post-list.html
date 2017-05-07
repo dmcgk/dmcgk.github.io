@@ -1,11 +1,9 @@
-{% assign raw = post.content | strip_html %}
+{% include post-type.liquid %}
 
-{% if raw.size > site.micro_length %}
-  {% assign article_post = true %}
+{% if article_post %}
   <!-- Begin article excerpt -->
   <div class="article-excerpt">
 {% else %}
-  {% assign article_post = false %}
   <!-- Begin micro post excerpt -->
   <div class="micro-excerpt">
 {% endif %}
@@ -14,6 +12,13 @@
 <h4>
   <a href="{{ post.url }}">{{ post.date | date: '%-d %B %Y, %H:%M' }}</a>
 </h4>
+
+<!-- Article title -->
+{% if article_post %}
+<h2>
+  <a href="{{ post.url }}">{{ post.title }}</a>
+</h2>
+{% endif %}
 
 <!-- Post excerpt -->
 <p>

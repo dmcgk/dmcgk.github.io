@@ -1,6 +1,8 @@
 ---
 layout: compress
 ---
+{% include post-type.liquid %}
+
 <!DOCTYPE html>
 <html lang="{{ site.lang }}">
   <head>
@@ -24,11 +26,11 @@ layout: compress
   <body>
     <section class="page-header">
       <h2 class="project-name"><a href="/">{{ site.title | default: site.github.repository_name }}</a></h2>
-      {% if page.category %}
-        <h3 class="project-tagline"><a href="/{{ page.category }}">{{ page.category }}</a></h3>
-      {% endif %}
     </section>
     <section class="main-content">
+      {% if article_post %}
+        <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+      {% endif %}
       {{ content }}
     </section>
     <footer class="site-footer">
