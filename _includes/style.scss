@@ -1,0 +1,60 @@
+@import "{{ site.theme }}";
+
+/* Local style overrides */
+
+{% assign site-colour = "crimson" %}
+{% assign site-font = "Source Sans Pro" %}
+{% assign site-font-web-regular = "https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlJbPFduIYtoLzwST68uhz_Y.woff2" %}
+{% assign site-font-web-bold = "https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGJkF8H8ye47wsfpWywda8og.woff2" %}
+
+@font-face {
+  font-family: '{{ site-font }}';
+  font-style: normal;
+  font-weight: 400;
+  src: local('{{ site-font }}'), local('{{ site-font | replace: ' ', '' }}-Regular'), url({{ site-font-web-regular }}) format('woff2');
+}
+
+@font-face {
+  font-family: '{{ site-font }}';
+  font-style: normal;
+  font-weight: 700;
+  src: local('{{ site-font }} Bold'), local('{{ site-font | replace: ' ', '' }}-Bold'), url({{ site-font-web-bold }}) format('woff2');
+}
+
+@mixin all-headings($from: 1, $to: 6) {
+  @for $i from $from through $to {
+    h#{$i}{
+      @content
+    }
+  }
+}
+
+@include all-headings(){
+  @extend %headings !optional;
+}
+
+body { 
+	font-family: {{ site-font }}, sans-serif; 
+	color: black; 
+}
+
+.page-header { 
+	background-color: white; 
+	background-image: none; 
+}
+
+a {
+	color: {{ site-colour }};
+}
+
+.main-content %headings { color: {{ site-colour }}; }
+
+.site-footer, .pagination {
+	text-align: center;
+}
+
+.article-excerpt {
+	margin: 3rem 0rem 3rem 3rem;
+}
+
+.article-excerpt %headings { margin: 0; }
