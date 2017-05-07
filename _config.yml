@@ -36,6 +36,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - CNAME
 
 # Plugin settings
 jekyll-mentions:
