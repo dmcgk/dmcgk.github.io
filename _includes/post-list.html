@@ -26,7 +26,11 @@
   {{ post_text }} 
 {% else %}
   {% assign post_text = post.content | truncatewords:100 %}
-  {{ post_text }} 
+  {% if is_micro_post %}
+    {{ post_text | strip_html }}
+  {% else %}
+    {{ post_text }}
+  {% endif %}
 	{% if raw.size > post_text.size %}
 	  <a href="{{ post.url }}">(more)</a>
 	{% endif %}
