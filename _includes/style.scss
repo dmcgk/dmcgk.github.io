@@ -89,7 +89,6 @@ header, footer {
 header %headings {
   font-weight: bold;
   font-size: 4rem;
-  letter-spacing: 0.1rem;
 }
 
 a {
@@ -122,7 +121,7 @@ blockquote, .micro-excerpt {
 }
 
 .article-excerpt {
-  margin: 4rem 0rem 4rem 0rem;
+  margin: 4rem 0rem;
 }
 
 /* Responsive Overrides */
@@ -150,13 +149,17 @@ blockquote, .micro-excerpt {
     padding: 1rem 0rem;
   }
 
+  header %headings {
+    font-size: 2rem;  
+  }
+
   .article-excerpt {
-    margin: auto;
+    margin: 2rem 1rem;
   }
 
   .micro-excerpt {
     padding: 0;
-    margin: auto;
+    margin: 2rem 1rem;
     border-width: 0px 0px 0px 0px;
   }
 
