@@ -2,7 +2,6 @@
 title: fernseed
 url: https://fernseed.org
 permalink: /:slug/
-theme: jekyll-theme-cayman
 lang: en
 paginate: 20
 paginate_path: '/archive/:num/'

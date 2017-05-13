@@ -24,16 +24,16 @@ layout: compress
     </style>
   </head>
   <body>
-    <section class="page-header">
-      <h2 class="project-name"><a href="/">{{ site.title | default: site.github.repository_name }}</a></h2>
-    </section>
-    <section class="main-content">
-      {% if article_post %}
+    <header>
+      <h2><a href="/">{{ site.title | default: site.github.repository_name }}</a></h2>
+    </header>
+    <article>
+      {% unless is_micro_post %}
         <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-      {% endif %}
+      {% endunless %}
       {{ content }}
-    </section>
-    <footer class="site-footer">
+    </article>
+    <footer>
       <p>&copy; {{ site.time | date: '%Y' }} @dmcgk</p>
     </footer>
   </body>

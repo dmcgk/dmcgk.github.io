@@ -2,9 +2,9 @@
 
 <entry>
     <title>
-        {% if article_post %}
+        {% unless is_micro_post %}
             {{ post.title }}
-        {% endif %}
+        {% endunless %}
     </title>
     {% assign author = site.data.authors[page.author] %}
     {% if author %}

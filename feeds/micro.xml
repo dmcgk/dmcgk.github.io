@@ -4,8 +4,8 @@ layout: feed
 {% for post in site.posts limit:site.paginate %}
 	{% if post.author == "darren" %}
 		{% include post-type.liquid %}
-		{% unless article_post %}
+		{% if is_micro_post %}
 	    	{% include post-list.xml %}
-		{% endunless %}
+		{% endif %}
 	{% endif %}
 {% endfor %}

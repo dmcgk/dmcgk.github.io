@@ -1,11 +1,20 @@
-@import "{{ site.theme }}";
+/* Third Party Includes */
 
-/* Local style overrides */
+{% include normalize.css %}
+{% include solarized.css %}
+
+/* Variables */
 
 {% assign site-colour = "crimson" %}
 {% assign site-font = "Source Sans Pro" %}
+{% assign site-font-code = "Source Code Pro" %}
 {% assign site-font-web-regular = "https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlJbPFduIYtoLzwST68uhz_Y.woff2" %}
 {% assign site-font-web-bold = "https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGJkF8H8ye47wsfpWywda8og.woff2" %}
+{% assign site-font-web-code = "https://fonts.gstatic.com/s/sourcecodepro/v6/mrl8jkM18OlOQN8JLgasD5bPFduIYtoLzwST68uhz_Y.woff2" %}
+{% assign site-small = "42rem" %}
+{% assign site-medium = "64rem" %}
+
+/* Web Fonts */
 
 @font-face {
   font-family: '{{ site-font }}';
@@ -21,7 +30,22 @@
   src: local('{{ site-font }} Bold'), local('{{ site-font | replace: ' ', '' }}-Bold'), url({{ site-font-web-bold }}) format('woff2');
 }
 
-@mixin all-headings($from: 1, $to: 6) {
+@font-face {
+  font-family: '{{ site-font-code }}';
+  font-style: normal;
+  font-weight: 400;
+  src: local('{{ site-font-code }}'), local('{{ site-font-code | replace: ' ', '' }}-Regular'), url({{ site-font-web-code }}) format('woff2');
+}
+
+/* Functions */
+
+@mixin respond-to($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin headings-all($from: 1, $to: 6) {
   @for $i from $from through $to {
     h#{$i}{
       @content
@@ -29,44 +53,112 @@
   }
 }
 
-@include all-headings(){
+/* Styles */
+
+@include headings-all(){
+  margin-top: 2rem; 
+  margin-bottom: 1rem; 
+  font-weight: normal;
+  color: {{ site-colour }};
   @extend %headings !optional;
 }
 
 body { 
-	font-family: {{ site-font }}, sans-serif; 
-	color: black; 
+  padding: 0; 
+  line-height: 1.5;
+  font-size: 1.2rem;
+  font-family: {{ site-font }}, sans-serif; 
+  color: black; 
+  word-wrap: break-word;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.page-header { 
-	background-color: white; 
-	background-image: none; 
+pre { 
+  font-family: {{ site-font-code }}, monospace; 
+  word-wrap: normal; 
+  padding: 2rem 1rem;
+}
+
+header, footer { 
+  padding: 4rem 2rem;
+  text-align: center; 
+}
+
+header %headings {
+  font-weight: bold;
+  font-size: 4rem;
+  letter-spacing: 0.1rem;
 }
 
 a {
 	color: {{ site-colour }};
+  text-decoration: none;
 }
 
-.main-content %headings { color: {{ site-colour }}; }
-
-.site-footer, .pagination {
-	text-align: center;
+a:hover { 
+  text-decoration: underline;
 }
 
-.article-excerpt %headings { margin: 0; }
-
-.article-excerpt {
-  margin: 4rem 0rem 4rem 0rem;
+img {
+  max-width: 100%;
 }
 
-@media screen and (max-width: 42em) { .article-excerpt { margin: 0; } }
+li {
+  margin-left: 1rem;
+}
 
-.micro-excerpt {
-  padding: 1rem 0rem 1rem 2rem;
+blockquote, .micro-excerpt {
+  padding: 1rem 2rem;
   margin: 0rem 0rem 0rem 1rem;
   border-style: solid;
   border-width: 0px 0px 0px 7px;
   border-color: {{ site-colour }}
 }
 
-@media screen and (max-width: 42em) { .micro-excerpt { padding: 0; margin: 0; border-width: 0px; } }
+.article-excerpt %headings, .micro-excerpt %headings {
+  margin: 0; 
+}
+
+.article-excerpt {
+  margin: 4rem 0rem 4rem 0rem;
+}
+
+/* Responsive Overrides */
+
+@include respond-to({{ site-medium }}) {
+
+  header %headings {
+    font-size: 3rem;
+  }
+
+  article {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+}
+
+@include respond-to({{ site-small }}) {
+
+  body {
+    font-size: 1rem;
+  }
+
+  header, footer {
+    padding: 1rem 0rem;
+  }
+
+  .article-excerpt {
+    margin: auto;
+  }
+
+  .micro-excerpt {
+    padding: 0;
+    margin: auto;
+    border-width: 0px 0px 0px 0px;
+  }
+
+}
+

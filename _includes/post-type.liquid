@@ -4,8 +4,8 @@
 	{% assign raw = page.content | strip_html %}
 {% endif %}
 
-{% if raw.size > site.micro_length %}
-  {% assign article_post = true %}
+{% if raw.size <= site.micro_length %}
+  {% assign is_micro_post = true %}
 {% else %}
-  {% assign article_post = false %}
+  {% assign is_micro_post = false %}
 {% endif %}

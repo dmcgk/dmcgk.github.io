@@ -3,7 +3,7 @@ layout: feed
 ---
 {% for post in site.posts limit:site.paginate %}
 	{% include post-type.liquid %}
-	{% if article_post %}
+	{% unless is_micro_post %}
 		{% include post-list.xml %}
-	{% endif %}
+	{% endunless %}
 {% endfor %}
