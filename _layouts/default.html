@@ -27,13 +27,16 @@ layout: compress
     <header>
       <h2><a href="/">{{ site.title | default: site.github.repository_name }}</a></h2>
     </header>
-    <article>
+    {% unless page.layout == "index" %}<article>{% endunless %}
       {% unless is_micro_post %}
         <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
       {% endunless %}
       {{ content }}
-    </article>
+    {% unless page.layout == "index" %}</article>{% endunless %}
     <footer>
+      {% if paginator.total_posts > site.paginate %}
+        {% include paginate.html %}
+      {% endif %}
       <p>&copy; {{ site.time | date: '%Y' }} @dmcgk</p>
     </footer>
   </body>

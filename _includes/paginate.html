@@ -1,15 +1,11 @@
-<h3 class="pagination">
+<h3>
   {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path }}">Newer</a>
-  {% else %}
-    Newer
+    &nbsp;&middot;&nbsp;
   {% endif %}
-  &nbsp;&middot;&nbsp;
   {{ paginator.page }} / {{ paginator.total_pages }}
-  &nbsp;&middot;&nbsp;
   {% if paginator.next_page %}
+    &nbsp;&middot;&nbsp;
     <a href="{{ paginator.next_page_path }}">Older</a>
-  {% else %}
-    Older
   {% endif %}
 </h3>
