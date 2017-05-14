@@ -27,7 +27,7 @@
 {% else %}
   {% assign post_text = post.content | truncatewords:100 %}
   {% if is_micro_post %}
-    {{ post_text | strip_html }}
+    <p>{{ post_text | strip_html }}</p>
   {% else %}
     {{ post_text }}
   {% endif %}
