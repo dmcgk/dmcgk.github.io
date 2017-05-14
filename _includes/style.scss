@@ -137,6 +137,10 @@ blockquote, .micro-excerpt {
     padding-right: 1rem;
   }
 
+  .article-excerpt {
+    margin: 2rem 1rem;
+  }
+
 }
 
 @include respond-to({{ site-small }}) {
@@ -151,10 +155,6 @@ blockquote, .micro-excerpt {
 
   header %headings {
     font-size: 2rem;  
-  }
-
-  .article-excerpt {
-    margin: 2rem 1rem;
   }
 
   .micro-excerpt {
