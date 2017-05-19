@@ -1,0 +1,22 @@
+---
+layout: data
+---
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "{{ site.title }}",
+    "home_page_url": "{{ site.url }}/",
+    "feed_url": "{{ site.url }}{{ page.url }}",
+    "favicon": "{{ site.url }}/images/logo.png",
+    "icon": "{{ site.url }}/images/logo@2x.png",
+    {% assign author = site.data.authors[site.author] %}
+    {% if author %}
+        "author": {
+            "name": "{{ author.name }}",
+            "avatar": "{{ author.avatar }}",
+            "url": "{{ author.urls | first }}"
+        },
+    {% endif %}
+    "items": [
+        {{ content }}
+    ]
+}

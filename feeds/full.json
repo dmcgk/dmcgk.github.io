@@ -1,0 +1,7 @@
+---
+layout: feed
+---
+{% for post in site.posts limit: site.paginate %}
+	{% if beyond_first_post %},{% else %}{% assign beyond_first_post = true %}{% endif %}
+	{% include post-list.json %}
+{% endfor %}

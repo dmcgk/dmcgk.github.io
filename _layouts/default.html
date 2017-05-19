@@ -9,10 +9,8 @@ layout: compress
   	<title>{{ page.title | default: site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include icons.html %}
+    {% include feeds.html %}
 	  {% seo title=false %}
-    <link rel="alternate" href="/feeds/articles.xml" type="application/atom+xml" title="Article Posts" />
-    <link rel="alternate" href="/feeds/micro.xml" type="application/atom+xml" title="Micro Posts" />
-    <link rel="alternate" href="/feeds/full.xml" type="application/atom+xml" title="All Posts" />
     {% assign author = site.data.authors[site.author] %}
     {% if author %}
       {% for url in author.urls %}

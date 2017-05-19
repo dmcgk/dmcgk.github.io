@@ -1,0 +1,18 @@
+{
+    "id": "{{ site.url }}{{ post.url }}",
+    {% if post.description %}
+    "summary": {{ post.description | jsonify }},
+    {% endif %}
+    "content_html": {{ post.content | jsonify }},
+    "url": "{{ site.url }}{{ post.url }}",
+    {% if post.image %}
+    "image": "{{ site.url }}{{ post.image }}",
+    {% endif %}
+    {% if post.link %}
+    "external_url": "{{ post.link }}",
+    {% endif %}
+    {% if post.banner %}
+    "banner_image": "{{ site.url }}{{ post.banner }}",
+    {% endif %}
+    "date_published": "{{ post.date | date_to_xmlschema }}"
+}

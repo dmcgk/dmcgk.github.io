@@ -1,7 +1,7 @@
 ---
-layout: feed
+layout: feed-atom
 redirect_from: /feed/
 ---
-{% for post in site.posts limit:site.paginate %}
-    {% include post-list.xml %}
+{% for post in site.posts limit: site.paginate %}
+	{% include post-list.xml %}
 {% endfor %}

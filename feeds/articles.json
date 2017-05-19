@@ -1,9 +1,10 @@
 ---
-layout: feed-atom
+layout: feed
 ---
 {% for post in site.posts limit: site.paginate %}
 	{% include post-type.liquid %}
 	{% unless is_micro_post %}
-		{% include post-list.xml %}
+		{% if beyond_first_post %},{% else %}{% assign beyond_first_post = true %}{% endif %}
+	    {% include post-list.json %}
 	{% endunless %}
 {% endfor %}
