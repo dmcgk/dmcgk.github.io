@@ -1,5 +1,9 @@
+{% include post-type.liquid %}
 {
     "id": "{{ site.url }}{{ post.url }}",
+    {% unless is_micro_post %}
+    "title": "{{ post.title }}",
+    {% endunless %}
     {% if post.description %}
     "summary": {{ post.description | jsonify }},
     {% endif %}
