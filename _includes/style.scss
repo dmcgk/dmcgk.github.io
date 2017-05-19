@@ -12,7 +12,8 @@
 {% assign site-font-web-bold = "https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGJkF8H8ye47wsfpWywda8og.woff2" %}
 {% assign site-font-web-code = "https://fonts.gstatic.com/s/sourcecodepro/v6/mrl8jkM18OlOQN8JLgasD5bPFduIYtoLzwST68uhz_Y.woff2" %}
 {% assign site-small = "42rem" %}
-{% assign site-medium = "64rem" %}
+{% assign site-medium = "48rem" %}
+{% assign site-large = "64rem" %}
 
 /* Web Fonts */
 
@@ -70,7 +71,6 @@ body {
   font-family: {{ site-font }}, sans-serif; 
   color: black; 
   word-wrap: break-word;
-  max-width: 48rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -101,44 +101,48 @@ a:hover {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
+  max-width: {{ site-large }};
+  margin: 2rem auto;
+  display: block
 }
 
 li {
   margin-left: 1rem;
 }
 
-blockquote, .micro-excerpt {
+blockquote, .micro-excerpt > :not(img) {
   padding: 1rem 2rem;
-  margin: 0rem 0rem 0rem 1rem;
+  margin: 0 auto;
   border-style: solid;
   border-width: 0px 0px 0px 7px;
   border-color: {{ site-colour }}
 }
 
-.article-excerpt %headings, .micro-excerpt %headings {
-  margin: 0; 
+section > :not(img), article > :not(img) {
+  max-width: {{ site-medium }};
+  margin: 1rem auto;
+}
+
+.article-excerpt > %headings, .micro-excerpt > %headings {
+  margin: 0 auto; 
 }
 
 .article-excerpt {
-  margin: 4rem 0rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 /* Responsive Overrides */
 
-@include respond-to({{ site-medium }}) {
+@include respond-to({{ site-large }}) {
 
   header %headings {
     font-size: 3rem;
   }
 
-  article {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .article-excerpt {
-    margin: 2rem 1rem;
+  section > :not(img), article > :not(img) {
+    max-width: 80%
   }
 
 }
@@ -157,11 +161,18 @@ blockquote, .micro-excerpt {
     font-size: 2rem;  
   }
 
-  .micro-excerpt {
+  .article-excerpt {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .article-excerpt > %headings, .micro-excerpt > %headings {
     padding: 0;
-    margin: 2rem 1rem;
+    margin: 0 auto; 
+  }
+
+  .micro-excerpt > :not(img) {
     border-width: 0px 0px 0px 0px;
   }
 
 }
-

@@ -30,7 +30,9 @@ layout: compress
       {% unless is_micro_post %}
         <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
       {% endunless %}
-      {{ content }}
+      <!-- Workaround for kramdown wrapping <img> within <p> -->
+      {% assign content_with_images_unwrapped = content | replace:'<p><img','<img' %}
+      {{ content_with_images_unwrapped }}
     {% unless page.layout == "index" %}</article>{% endunless %}
     <footer>
       {% if paginator.total_posts > site.paginate %}
