@@ -1,0 +1,14 @@
+---
+layout: none
+---
+/* TEAM */
+{% for entry in site.data.authors %}{% assign author_id = entry | first %}{% assign author = site.data.authors[author_id] %}
+Author: {{ author.name }}{% for url in author.urls %}
+Site: {{ url }}{% endfor %}
+Twitter: {{ author.twitter }}
+Location: {{ author.location }}
+{% endfor %}
+/* SITE */
+
+Last update: {{ site.time | date: '%Y/%m/%d' }} 
+Components: Markdown, Jekyll, GitHub Pages.

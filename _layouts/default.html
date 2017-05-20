@@ -16,6 +16,7 @@ layout: compress
       {% for url in author.urls %}
         <link rel="me" href="{{ url }}"/>
       {% endfor %}
+      <link type="text/plain" rel="author" href="humans.txt" />
     {% endif %}
     <style>
       {% capture site-styles %}{% include style.scss %}{% endcapture %}

@@ -1,10 +1,10 @@
 darren:
+  name: Darren McGuicken
+  location: Northern Ireland
+  avatar: https://fernseed.org/images/avatar.jpg
   twitter: dmcgk
   email: feedback@fernseed.org
-  name: Darren McGuicken
-  avatar: https://fernseed.org/images/avatar.jpg
   urls: 
     - https://twitter.com/dmcgk
     - https://github.com/dmcgk
     - https://micro.blog/dmcgk
-  
