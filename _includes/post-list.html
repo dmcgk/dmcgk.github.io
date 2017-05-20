@@ -25,7 +25,7 @@
   {% assign post_text = post.description %}
   {{ post_text }} 
 {% else %}
-  {% assign post_text = post.content | truncatewords:100 %}
+  {% assign post_text = post.content | truncatewords:site.inline_article_length %}
   {{ post_text }}
 	{% if raw.size > post_text.size %}
 	  <a href="{{ post.url }}">(more)</a>

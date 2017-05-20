@@ -6,6 +6,7 @@ lang: en
 paginate: 20
 paginate_path: '/archive/:num/'
 micro_length: 200
+inline_article_length: 1000
 
 # Contact settings
 twitter:
