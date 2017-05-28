@@ -4,9 +4,9 @@ layout: compress
 {% include post-type.liquid %}
 
 <!DOCTYPE html>
-<html lang="{{ site.lang }}">
+<html lang="{{ site.lang }}" class="{% if page.layout == "index" %}h-feed{% else %}h-entry{% endif %}">
   <head>
-  	<title>{{ page.title | default: site.title }}</title>
+  	<title class="p-name">{{ page.title | default: site.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include icons.html %}
     {% include feeds.html %}
@@ -27,14 +27,19 @@ layout: compress
     <header>
       <h2><a href="/">{{ site.title | default: site.github.repository_name }}</a></h2>
     </header>
-    {% unless page.layout == "index" %}<article>{% endunless %}
-      {% unless is_micro_post %}
-        <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+      {% unless page.layout == "index" %}
+        <article class="e-content">
+        {% unless is_micro_post %}
+          <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+        {% endunless %}
       {% endunless %}
       <!-- Workaround for kramdown wrapping <img> within <p> -->
       {% assign content_with_images_unwrapped = content | replace:'<p><img','<img' %}
       {{ content_with_images_unwrapped }}
-    {% unless page.layout == "index" %}</article>{% endunless %}
+      {% unless page.layout == "index" %}
+        <h4><a href="{{ page.url }}" class="u-url dt-published">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a></h4>
+        </article>
+      {% endunless %}
     <footer>
       {% if paginator.total_posts > site.paginate %}
         {% include paginate.html %}
