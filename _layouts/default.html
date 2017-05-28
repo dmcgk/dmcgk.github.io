@@ -8,9 +8,9 @@ layout: compress
   <head>
     <title 
       {% if page.layout == "index" %}
-        class="p-name">
+        class="p-name">{{ page.title | default: site.title }}
       {% else %}
-    	 {% unless is_micro_post %}class="p-name"{% endunless %}>{{ page.title | default: site.title }}
+    	 {% unless is_micro_post %}class="p-name"{% endunless %}>{{ page.title }}
       {% endif %}
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
