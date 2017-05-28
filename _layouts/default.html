@@ -6,7 +6,13 @@ layout: compress
 <!DOCTYPE html>
 <html lang="{{ site.lang }}" class="{% if page.layout == "index" %}h-feed{% else %}h-entry{% endif %}">
   <head>
-  	<title class="p-name">{{ page.title | default: site.title }}</title>
+    <title 
+      {% if page.layout == "index" %}
+        class="p-name">
+      {% else %}
+    	 {% unless is_micro_post %}class="p-name"{% endunless %}>{{ page.title | default: site.title }}
+      {% endif %}
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include icons.html %}
     {% include feeds.html %}
@@ -37,7 +43,7 @@ layout: compress
       {% assign content_with_images_unwrapped = content | replace:'<p><img','<img' %}
       {{ content_with_images_unwrapped }}
       {% unless page.layout == "index" %}
-        <h4><a href="{{ page.url }}" class="u-url dt-published">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a></h4>
+        <h4><a href="{{ page.url }}" class="u-url dt-published{% if is_micro_post %} p-name{% endif %}">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a></h4>
         </article>
       {% endunless %}
     <footer>

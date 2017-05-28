@@ -10,13 +10,13 @@
 
 <!-- Post date -->
 <h4>
-  <a href="{{ post.url }}" class="u-url dt-published">{{ post.date | date: '%-d %B %Y, %H:%M' }}</a>
+  <a href="{{ post.url }}" class="u-url dt-published{% if is_micro_post %} p-name{% endif %}">{{ post.date | date: '%-d %B %Y, %H:%M' }}</a>
 </h4>
 
 <!-- Article title -->
 {% unless is_micro_post %}
 <h2>
-  <a href="{{ post.url }}">{{ post.title }}</a>
+  <a href="{{ post.url }}" class="p-name">{{ post.title }}</a>
 </h2>
 {% endunless %}
 
