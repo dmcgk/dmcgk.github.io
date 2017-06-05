@@ -133,6 +133,10 @@ section > :not(img), article > :not(img) {
   margin-bottom: 4rem;
 }
 
+#genre {
+  font-weight: bold;
+}
+
 /* Responsive Overrides */
 
 @include respond-to({{ site-large }}) {
