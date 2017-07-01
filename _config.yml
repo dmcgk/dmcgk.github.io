@@ -5,6 +5,8 @@ permalink: /:slug/
 lang: en
 paginate: 20
 paginate_path: '/archive/:num/'
+images_path: '/images/'
+small_image_threshold: 400w
 micro_length: 200
 inline_article_length: 1000
 

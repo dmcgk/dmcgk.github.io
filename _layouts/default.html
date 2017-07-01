@@ -39,10 +39,11 @@ layout: compress
           <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
         {% endunless %}
       {% endunless %}
-      <!-- Workaround for kramdown wrapping <img> within <p> -->
-      {% assign content_with_images_unwrapped = content | replace:'<p><img','<img' %}
-      {{ content_with_images_unwrapped }}
+      <!-- Workaround for kramdown wrapping inline <img> within <p> -->
+      {% assign content_with_inline_images_unwrapped = content | replace:'<p><img','<img' %}
+      {{ content_with_inline_images_unwrapped }}
       {% unless page.layout == "index" %}
+        {% include images.html %}
         <h4><a href="{{ page.url }}" class="u-url dt-published{% if is_micro_post %} p-name{% endif %}">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a></h4>
         </article>
       {% endunless %}

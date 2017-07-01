@@ -124,6 +124,11 @@ section > :not(img), article > :not(img) {
   margin: 1rem auto;
 }
 
+p.read-more {
+  padding-top: 0;
+  padding-bottom: 1rem;
+}
+
 .article-excerpt > %headings, .micro-excerpt > %headings {
   margin: 0 auto; 
 }
@@ -131,6 +136,19 @@ section > :not(img), article > :not(img) {
 .article-excerpt {
   margin-top: 4rem;
   margin-bottom: 4rem;
+}
+
+.image-list {
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.image-list > img {
+  display: inline;
+  margin: auto;
+  padding: 1rem;
+  max-height: 50vh;
+  width: auto;
 }
 
 #genre {

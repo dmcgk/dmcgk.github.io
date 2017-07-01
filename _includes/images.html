@@ -1,0 +1,38 @@
+{% if page.images %}
+
+  <!-- Carousel -->
+  {% if page.images.size > 1 %}
+    <section class="image-list">
+      {% for image in page.images %}
+          {% assign contains_raw_images = image | split: '-raw.' %}
+
+          <!-- Single Raw Image -->
+          {% if contains_raw_images.size > 0 %}
+            <img src="{{ site.images_path }}{{ image }}" />
+
+          <!-- Image with small and large variations -->
+          {% else %}
+            {% assign picture_elements = image | split: '.' %}
+            <img src="{{ site.images_path }}{{ image }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ image }}" />
+          {% endif %}
+
+      {% endfor %}
+    </section>
+
+  <!-- Single Feature Image -->
+  {% else %}
+    {% assign contains_raw_images = page.images.first | split: '-raw.' %}
+
+    <!-- Single Raw Image -->
+    {% if contains_raw_images.size > 0 %}
+      <img src="{{ site.images_path }}{{ page.images.first }}" />
+
+    <!-- Image with small and large variations -->
+    {% else %}
+      {% assign picture_elements = page.images.first | split: '.' %}
+      <img src="{{ site.images_path }}{{ page.images.first }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ page.images.first }}" />
+    {% endif %}
+    
+  {% endif %}
+
+{% endif %}

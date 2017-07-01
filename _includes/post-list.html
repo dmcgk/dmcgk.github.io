@@ -27,8 +27,8 @@
 {% else %}
   {% assign post_text = post.content | truncatewords:site.inline_article_length %}
   {{ post_text }}
-	{% if raw.size > post_text.size %}
-	  <a href="{{ post.url }}">(more)</a>
+	{% if raw.size > post_text.size or post.images %}
+	  <p class="read-more"><a href="{{ post.url }}">(more)</a></p>
 	{% endif %}
 {% endif %}
 

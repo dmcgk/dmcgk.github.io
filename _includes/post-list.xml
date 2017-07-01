@@ -22,6 +22,11 @@
         </summary>
     {% endif %}
     <content type="html">
-        {{ post.content | xml_escape }}
+        {% if post.images %}
+            {% capture image_string %}{% for image in post.images%}"<img src='{{ site.url }}{{ site.images_path }}{{ image }}'>"{% endfor %}{% endcapture %}
+        {% else %}
+            {% assign image_string = "" %}
+        {% endif %}
+        {{ post.content | append: image_string | xml_escape }}
     </content>
 </entry>
