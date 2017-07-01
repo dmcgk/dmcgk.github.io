@@ -7,7 +7,7 @@
           {% assign contains_raw_images = image | split: '-raw.' %}
 
           <!-- Single Raw Image -->
-          {% if contains_raw_images.size > 0 %}
+          {% if contains_raw_images.size > 1 %}
             <img src="{{ site.images_path }}{{ image }}" />
 
           <!-- Image with small and large variations -->
@@ -24,7 +24,7 @@
     {% assign contains_raw_images = page.images.first | split: '-raw.' %}
 
     <!-- Single Raw Image -->
-    {% if contains_raw_images.size > 0 %}
+    {% if contains_raw_images.size > 1 %}
       <img src="{{ site.images_path }}{{ page.images.first }}" />
 
     <!-- Image with small and large variations -->
