@@ -10,7 +10,7 @@
     "url": "{{ site.url }}{{ post.url }}",
     {% if post.images %}
     "image": "{{ site.url }}{{ site.images_path }}{{ post.images.first }}",
-    {% capture image_string %}{% for image in post.images%}"<img src='{{ site.url }}{{ site.images_path }}{{ image }}'>"{% endfor %}{% endcapture %}
+    {% capture image_string %}{% for image in post.images%}<img src='{{ site.url }}{{ site.images_path }}{{ image }}'>{% endfor %}{% endcapture %}
     {% else %}
     {% assign image_string = "" %}
     {% endif %}
