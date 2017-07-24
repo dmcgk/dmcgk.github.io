@@ -1,5 +1,12 @@
 {% include post-type.liquid %}
 
+<!-- Assign post text excerpt -->
+{% if post.description %}
+  {% assign post_text = post.description %}
+{% else %}
+  {% assign post_text = post.content | truncatewords:site.inline_article_length %}
+{% endif %}
+
 {% if is_micro_post %}
   <!-- Begin article excerpt -->
   <section class="h-entry micro-excerpt">
@@ -11,6 +18,23 @@
 <!-- Post date -->
 <h4>
   <a href="{{ post.url }}" class="u-url dt-published{% if is_micro_post %} p-name{% endif %}">{{ post.date | date: '%-d %B %Y, %H:%M' }}</a>
+
+  <!-- 'Read More' placeholder & workaround for lack of Array element addition in Liquid -->
+  {% assign read_more_elements = "" %}
+  {% if post.images %}
+    {% assign read_more_elements = read_more_elements | append: "image" %}
+    {% if post.images.size > 1 %}{% assign read_more_elements = read_more_elements | append: "s" %}{% endif %}
+    {% assign read_more_elements = read_more_elements | append: "," %}
+  {% endif %}
+  {% if raw.size > post_text.size %}
+    {% assign read_more_elements = read_more_elements | append: "read more," %}
+  {% endif %}
+
+  {% unless read_more_elements == "" %}
+    {% assign read_more_array = read_more_elements | split: "," %}
+    {% capture read_more_text %}{% for element in read_more_array %}{{ element }}{% unless forloop.last %} & {% endunless %}{% endfor %}{% endcapture %}
+    <a href="{{ post.url }}">({{ read_more_text }})</a>
+  {% endunless %}
 </h4>
 
 <!-- Article title -->
@@ -20,25 +44,8 @@
 </h2>
 {% endunless %}
 
-<!-- Post excerpt -->
-{% if post.description %}
-  {% assign post_text = post.description %}
-  {{ post_text }} 
-{% else %}
-  {% assign post_text = post.content | truncatewords:site.inline_article_length %}
-  {{ post_text }}
-
-  <!-- 'Read More' placeholder & workaround for lack of Array element addition in Liquid -->
-  {% assign read_more_elements = "" %}
-  {% if post.images %}{% assign read_more_elements = read_more_elements | append: "images," %}{% endif %}
-	{% if raw.size > post_text.size %}{% assign read_more_elements = read_more_elements | append: "more," %}{% endif %}
-
-  {% unless read_more_elements == "" %}
-    {% assign read_more_array = read_more_elements | split: "," %}
-    {% capture read_more_text %}{% for element in read_more_array %}{{ element }}{% unless forloop.last %} & {% endunless %}{% endfor %}{% endcapture %}
-	  <p class="read-more"><a href="{{ post.url }}">({{ read_more_text }})</a></p>
-	{% endunless %}
-{% endif %}
+<!-- Display post text excerpt -->
+{{ post_text }} 
 
 <!-- Close separators -->
 </section>
