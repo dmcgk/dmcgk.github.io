@@ -4,6 +4,7 @@
   {% if page.images.size > 1 %}
     <section class="image-list">
       {% for image in page.images %}
+        <a href="{{ site.images_path }}{{ image }}">
           {% assign contains_raw_images = image | split: '-raw.' %}
 
           <!-- Single Raw Image -->
@@ -15,24 +16,24 @@
             {% assign picture_elements = image | split: '.' %}
             <img src="{{ site.images_path }}{{ image }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ image }}" />
           {% endif %}
-
+        </a>
       {% endfor %}
     </section>
 
   <!-- Single Feature Image -->
   {% else %}
     {% assign contains_raw_images = page.images.first | split: '-raw.' %}
+    <a href="{{ site.images_path }}{{ page.images.first }}">
+      <!-- Single Raw Image -->
+      {% if contains_raw_images.size > 1 %}
+        <img src="{{ site.images_path }}{{ page.images.first }}" />
 
-    <!-- Single Raw Image -->
-    {% if contains_raw_images.size > 1 %}
-      <img src="{{ site.images_path }}{{ page.images.first }}" />
-
-    <!-- Image with small and large variations -->
-    {% else %}
-      {% assign picture_elements = page.images.first | split: '.' %}
-      <img src="{{ site.images_path }}{{ page.images.first }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ page.images.first }}" />
-    {% endif %}
-    
+      <!-- Image with small and large variations -->
+      {% else %}
+        {% assign picture_elements = page.images.first | split: '.' %}
+        <img src="{{ site.images_path }}{{ page.images.first }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ page.images.first }}" />
+      {% endif %}
+    </a>
   {% endif %}
 
 {% endif %}
