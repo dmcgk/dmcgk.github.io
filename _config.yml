@@ -1,21 +1,23 @@
-# Site settings
+# Site
 title: fernseed
 url: https://fernseed.org
+
+# Organisation
+collections:
+  fiction:
+    output: true
+    permalink: /:collection/:title/
 permalink: /:slug/
-lang: en
-paginate: 20
 paginate_path: '/archive/:num/'
 images_path: '/images/'
-small_image_threshold: 500w
-micro_length: 200
-inline_article_length: 1000
 
-# Contact settings
+# Contact
 twitter:
   username: dmcgk
 author: darren
 
-# Build settings
+# Build
+lang: en
 defaults:
   -
     scope:
@@ -24,7 +26,18 @@ defaults:
       layout: default
       author: darren
 markdown: kramdown
-gems:
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CNAME
+paginate: 20
+small_image_threshold: 500w
+micro_length: 200
+inline_article_length: 1000
+
+# Plugins
+plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-seo-tag
@@ -34,13 +47,6 @@ gems:
   - jekyll-optional-front-matter
   - jekyll-relative-links
   - jekyll-titles-from-headings
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - README.md
-  - CNAME
-
-# Plugin settings
 jekyll-mentions:
   base_url: 'https://twitter.com'
 compress_html:
