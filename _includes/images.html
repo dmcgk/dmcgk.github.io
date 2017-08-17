@@ -5,10 +5,9 @@
     <section class="image-list">
       {% for image in page.images %}
         <a href="{{ site.images_path }}{{ image }}">
-          {% assign contains_raw_images = image | split: '-raw.' %}
 
           <!-- Single Raw Image -->
-          {% if contains_raw_images.size > 1 %}
+          {% if image contains '-raw.' %}
             <img src="{{ site.images_path }}{{ image }}" />
 
           <!-- Image with small and large variations -->
@@ -22,10 +21,9 @@
 
   <!-- Single Feature Image -->
   {% else %}
-    {% assign contains_raw_images = page.images.first | split: '-raw.' %}
     <a href="{{ site.images_path }}{{ page.images.first }}">
       <!-- Single Raw Image -->
-      {% if contains_raw_images.size > 1 %}
+      {% if page.images.first contains '-raw.' %}
         <img src="{{ site.images_path }}{{ page.images.first }}" />
 
       <!-- Image with small and large variations -->

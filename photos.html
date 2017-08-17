@@ -7,10 +7,9 @@ sitemap: false
 {% for page in site.categories.photo %}
   {% for image in page.images %}
     <a href="{{ page.url }}">
-      {% assign contains_raw_images = image | split: '-raw.' %}
 
       <!-- Single Raw Image -->
-      {% if contains_raw_images.size > 1 %}
+      {% if image contains '-raw.' %}
         <img src="{{ site.images_path }}{{ image }}" />
 
       <!-- Image with small and large variations -->
