@@ -1,5 +1,6 @@
 ---
 layout: feed
+comment: "This feed lists only the microblog entries posted to the site."
 ---
 {% for post in site.posts limit: site.paginate %}
 	{% if post.author == "darren" %}

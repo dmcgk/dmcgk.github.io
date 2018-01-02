@@ -4,14 +4,7 @@ layout: data
 {
     "version": "https://jsonfeed.org/version/1",
     "title": "{{ site.title }}",
-    "user_comment" :
-    {% if page.name == "articles.json" %}
-        "This feed lists only the article-length items posted to the site."
-    {% elsif page.name == "micro.json" %}
-        "This feed lists only the microblog entries posted to the site."
-    {% else %}
-        "This feed lists all of the items posted to the site, including microblog entries."
-    {% endif %},
+    "user_comment" : {{ page.comment }},
     "home_page_url": "{{ site.url }}/",
     "feed_url": "{{ site.url }}{{ page.url }}",
     "favicon": "{{ site.url }}/images/logo.png",
