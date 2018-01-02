@@ -4,7 +4,7 @@ layout: data
 {
     "version": "https://jsonfeed.org/version/1",
     "title": "{{ site.title }}",
-    "user_comment" : {{ page.comment }},
+    "user_comment": "{{ page.comment }}",
     "home_page_url": "{{ site.url }}/",
     "feed_url": "{{ site.url }}{{ page.url }}",
     "favicon": "{{ site.url }}/images/logo.png",
