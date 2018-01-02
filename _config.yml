@@ -33,7 +33,7 @@ exclude:
   - CNAME
 paginate: 20
 small_image_threshold: 500w
-micro_length: 200
+micro_length: 280
 inline_article_length: 1000
 
 # Plugins
