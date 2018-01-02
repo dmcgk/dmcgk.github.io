@@ -1,0 +1,8 @@
+---
+layout: feed-atom
+---
+{% for post in site.categories.photo %}
+	{% if post.author == "darren" %}
+	    {% include post-list.xml %}
+	{% endif %}
+{% endfor %}

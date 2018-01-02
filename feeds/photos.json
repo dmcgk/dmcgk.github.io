@@ -1,0 +1,9 @@
+---
+layout: feed
+---
+{% for post in site.categories.photo %}
+	{% if post.author == "darren" %}
+	   {% if beyond_first_post %},{% else %}{% assign beyond_first_post = true %}{% endif %}
+	   {% include post-list.json %}
+	{% endif %}
+{% endfor %}
