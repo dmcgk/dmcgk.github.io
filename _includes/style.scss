@@ -5,7 +5,7 @@
 
 /* Variables */
 
-{% assign site-colour = "crimson" %}
+{% assign site-colour = site.primary_colour %}
 {% assign site-font = "Source Sans Pro" %}
 {% assign site-font-code = "Source Code Pro" %}
 {% assign site-font-web-regular = "https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlJbPFduIYtoLzwST68uhz_Y.woff2" %}
@@ -109,7 +109,18 @@ img {
 }
 
 li {
-  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+svg {
+  width: 1.5rem;
+  height: auto;
+  vertical-align: middle;
+  fill: {{ site-colour }};
+}
+
+svg rect {
+  stroke: {{ site-colour }};
 }
 
 blockquote, .micro-excerpt > :not(img) {
@@ -117,7 +128,7 @@ blockquote, .micro-excerpt > :not(img) {
   margin: 0 auto;
   border-style: solid;
   border-width: 0px 0px 0px 7px;
-  border-color: {{ site-colour }}
+  border-color: {{ site-colour }};
 }
 
 section > :not(img), article > :not(img) {

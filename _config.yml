@@ -1,6 +1,12 @@
 # Site
 title: fernseed
 url: https://fernseed.org
+markdown_url: https://raw.githubusercontent.com/
+repository: dmcgk/dmcgk.github.io
+
+# Layout
+spacer: "&nbsp;&middot;&nbsp;"
+primary_colour: crimson;
 
 # Organisation
 collections:
@@ -8,8 +14,8 @@ collections:
     output: true
     permalink: /:collection/:title/
 permalink: /:slug/
-paginate_path: '/archive/:num/'
-images_path: '/images/'
+paginate_path: /archive/:num/
+images_path: /images/
 
 # Contact
 twitter:

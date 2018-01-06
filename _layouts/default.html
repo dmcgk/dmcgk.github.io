@@ -59,6 +59,11 @@ layout: compress
       {% if paginator.total_posts > site.paginate %}
         {% include paginate.html %}
       {% endif %}
+      {% unless page.layout == "index" %}
+        {% unless page.categories contains 'aggregated' %}
+          <p><a href="{{ site.markdown_url }}{{ site.github.repository_nwo }}/master/{{ page.path }}" title="Text Source">{% include markdown.svg %}</a></p>
+        {% endunless %}
+      {% endunless %}
       <p>&copy; {{ site.time | date: '%Y' }} @dmcgk</p>
     </footer>
   </body>
