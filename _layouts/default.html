@@ -36,7 +36,7 @@ layout: compress
         <nav>
           {% for nav_item in site.data.navigation %}
             <a href="{{ nav_item.link }}">{{ nav_item.title }}</a>
-            {% unless forloop.last %}&nbsp;&middot;&nbsp;{% endunless %}
+            {% unless forloop.last %}{{ site.spacer }}{% endunless %}
           {% endfor %}
         </nav>
       {% endif %}
