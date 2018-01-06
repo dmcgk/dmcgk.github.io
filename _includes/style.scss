@@ -131,6 +131,10 @@ svg rect {
   stroke: {{ site-colour }};
 }
 
+blockquote {
+  font-style: italic;
+}
+
 blockquote, .micro-excerpt > :not(img) {
   padding: 1rem 2rem;
   margin: 0 auto;

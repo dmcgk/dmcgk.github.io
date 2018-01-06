@@ -14,7 +14,12 @@
     {% else %}
     {% assign image_string = "" %}
     {% endif %}
-    "content_html": {{ post.content | append: image_string | jsonify }},
+    {% if post.link %}
+    {% capture link_attribution %}<p>Via <a href='{{ post.link }}' title='Source Link'>{{ post.attribution }}:</a></p>{% endcapture %}
+    {% else %}
+    {% assign link_attribution = "" %}
+    {% endif %}
+    "content_html": {{ link_attribution | append: post.content | append: image_string | jsonify }},
     {% if post.link %}
     "external_url": "{{ post.link }}",
     {% endif %}

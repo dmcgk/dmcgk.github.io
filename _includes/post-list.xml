@@ -27,6 +27,11 @@
         {% else %}
             {% assign image_string = "" %}
         {% endif %}
-        {{ post.content | append: image_string | xml_escape }}
+        {% if post.link %}
+            {% capture link_attribution %}<p>Via <a href='{{ post.link }}' title='Source Link'>{{ post.attribution }}:</a></p>{% endcapture %}
+        {% else %}
+            {% assign link_attribution = "" %}
+        {% endif %}
+        {{ link_attribution | append: post.content | append: image_string | xml_escape }}
     </content>
 </entry>

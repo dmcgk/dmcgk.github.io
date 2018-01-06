@@ -26,6 +26,9 @@
     {% if post.images.size > 1 %}{% assign read_more_elements = read_more_elements | append: "s" %}{% endif %}
     {% assign read_more_elements = read_more_elements | append: "," %}
   {% endif %}
+  {% if post.link %}
+    {% assign read_more_elements = read_more_elements | append: "link," %}
+  {% endif %}
   {% if raw.size > post_text.size %}
     {% assign read_more_elements = read_more_elements | append: "read more," %}
   {% endif %}
