@@ -1,5 +1,5 @@
 ---
-date: 2018-01-06 14:36:00 +00:00
+date: 2018-01-07 13:48:00 +00:00
 ---
 
 I've never liked the overhead of dealing with responsive image sets in Markdown when writing for the web. I've set up this site to expect any image links as a simple list as part of the YAML header, rather than within the main body of the post, which is processed further by Jekyll at compile-time.
