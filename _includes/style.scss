@@ -84,9 +84,13 @@ body {
 }
 
 pre { 
-  font-family: {{ site-font-code }}, monospace; 
   word-wrap: normal; 
   padding: 2rem 1rem;
+  font-size: 1rem;
+}
+
+pre, code {
+  font-family: {{ site-font-code }}, monospace; 
 }
 
 header, footer { 
@@ -143,6 +147,12 @@ blockquote, .micro-excerpt > :not(img) {
   border-color: {{ site-colour }};
 }
 
+figcaption {
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+}
+
 section > :not(img), article > :not(img) {
   max-width: {{ site-medium }};
   margin: 1rem auto;
@@ -168,6 +178,7 @@ section > :not(img), article > :not(img) {
   padding: 1rem;
   max-height: 50vh;
   width: auto;
+  vertical-align: middle;
 }
 
 #genre {
@@ -193,6 +204,10 @@ section > :not(img), article > :not(img) {
   body {
     text-align: left;
     font-size: 1rem;
+  }
+
+  pre { 
+    font-size: 0.6rem;
   }
 
   header, footer {
