@@ -185,6 +185,11 @@ section > :not(img), article > :not(img) {
   font-weight: bold;
 }
 
+#categories {
+  color: gray;
+  padding-top: 0;
+}
+
 /* Responsive Overrides */
 
 @include respond-to({{ site-large }}) {

@@ -50,5 +50,16 @@
 <!-- Display post text excerpt -->
 {{ post_text }} 
 
+<!-- Display hashtags for micro posts -->
+{% if is_micro_post %}
+<p id="categories">
+  {% for category in post.categories %}
+    {% unless category == site.content_root or category == site.micro_root or category == site.photo_root %}
+      #{{ category }} 
+    {% endunless %}
+  {% endfor %}
+</p>
+{% endif %}
+
 <!-- Close separators -->
 </section>

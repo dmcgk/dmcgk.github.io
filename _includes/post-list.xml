@@ -32,6 +32,9 @@
         {% else %}
             {% assign link_attribution = "" %}
         {% endif %}
-        {{ link_attribution | append: post.content | append: image_string | xml_escape }}
+        {% if is_micro_post %}
+            {% capture category_string %}<p>{% for category in post.categories %}{% unless category == site.content_root or category == site.micro_root or category == site.photo_root %}#{{ category }} {% endunless %}{% endfor %}</p>{% endcapture %}
+        {% endif %}
+        {{ link_attribution | append: post.content | append: image_string | append: category_string | xml_escape }}
     </content>
 </entry>

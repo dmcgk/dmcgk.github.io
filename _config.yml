@@ -16,6 +16,9 @@ collections:
 permalink: /:slug/
 paginate_path: /archive/:num/
 images_path: /images/
+content_root: content
+micro_root: micro
+photo_root: photo
 
 # Contact
 twitter:

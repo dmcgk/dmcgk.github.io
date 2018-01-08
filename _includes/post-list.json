@@ -19,7 +19,10 @@
     {% else %}
     {% assign link_attribution = "" %}
     {% endif %}
-    "content_html": {{ link_attribution | append: post.content | append: image_string | jsonify }},
+    {% if is_micro_post %}
+    {% capture category_string %}<p>{% for category in post.categories %}{% unless category == site.content_root or category == site.micro_root or category == site.photo_root %}#{{ category }} {% endunless %}{% endfor %}</p>{% endcapture %}
+    {% endif %}
+    "content_html": {{ link_attribution | append: post.content | append: image_string | append: category_string | jsonify }},
     {% if post.link %}
     "external_url": "{{ post.link }}",
     {% endif %}
