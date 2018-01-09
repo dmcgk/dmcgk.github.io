@@ -167,6 +167,10 @@ section > :not(img), article > :not(img) {
   margin-bottom: 4rem;
 }
 
+.micro-excerpt ul {
+  list-style-type: none;
+}
+
 .image-list {
   white-space: nowrap;
   overflow: auto;
