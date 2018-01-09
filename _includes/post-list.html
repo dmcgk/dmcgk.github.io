@@ -29,6 +29,9 @@
   {% if post.link %}
     {% assign read_more_elements = read_more_elements | append: "link," %}
   {% endif %}
+  {% if post.categories contains "aggregated" %}
+    {% assign read_more_elements = read_more_elements | append: "aggregated," %}
+  {% endif %}
   {% if raw.size > post_text.size %}
     {% assign read_more_elements = read_more_elements | append: "read more," %}
   {% endif %}
