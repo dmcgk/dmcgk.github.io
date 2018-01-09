@@ -17,7 +17,8 @@ layout: compress
     {% include icons.html %}
     {% include feeds.html %}
     {% include authentication.html %}
-	  {% seo title=false %}
+    {% include mentions.html %}
+	{% seo title=false %}
     {% assign author = site.data.authors[site.author] %}
     {% if author %}
       {% for url in author.urls %}
