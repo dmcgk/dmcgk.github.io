@@ -1,3 +1,8 @@
+---
+layout: none
+redirect_from: /publickey/
+---
+
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBFpUxpQBEADWOG0sZ6QffLCydqSg8VpZZsztgmsYcvmAcTrMQYNETXxX99Lj
