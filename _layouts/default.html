@@ -67,7 +67,7 @@ layout: compress
           <p><a href="{{ site.markdown_url }}{{ site.github.repository_nwo }}/master/{{ page.path }}" title="Post Text">{% include markdown.svg %}</a></p>
         {% endunless %}
       {% endunless %}
-      <p>&copy; {{ site.time | date: '%Y' }} @dmcgk</p>
+      <p class="h-card">&copy; {{ site.time | date: '%Y' }} <span class="p-nickname">@dmcgk</span></p>
     </footer>
   </body>
 </html>
