@@ -55,7 +55,7 @@
 
 <!-- Display hashtags for micro posts -->
 {% if is_micro_post %}
-<p id="categories">
+<p class="categories">
   {% for category in post.categories %}
     {% unless category == site.content_root or category == site.micro_root or category == site.photo_root %}
       #{{ category }} 

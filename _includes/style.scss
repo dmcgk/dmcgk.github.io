@@ -196,13 +196,13 @@ section > :not(img), article > :not(img) {
   border-radius: 15px;
 }
 
-#genre {
-  font-weight: bold;
-}
-
-#categories {
+.categories {
   color: gray;
   padding-top: 0;
+}
+
+#genre {
+  font-weight: bold;
 }
 
 /* Responsive Overrides */
