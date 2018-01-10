@@ -5,19 +5,6 @@ sitemap: false
 
 <section>
 {% for page in site.categories.photo %}
-  {% for image in page.images %}
-    <a href="{{ page.url }}">
-
-      <!-- Single Raw Image -->
-      {% if image contains '-raw.' %}
-        <img src="{{ site.images_path }}{{ image }}" />
-
-      <!-- Image with small and large variations -->
-      {% else %}
-        {% assign picture_elements = image | split: '.' %}
-        <img src="{{ site.images_path }}{{ image }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ image }}" />
-      {% endif %}
-    </a>
-  {% endfor %}
+  {% include images.html %}
 {% endfor %}
 </section>

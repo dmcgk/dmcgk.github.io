@@ -1,5 +1,6 @@
 ---
 date: 2017-05-20 13:25:00 +01:00
+image_description: "'Precipitation is in the area'."
 images:
     - 2017-05-20-early-summer.jpg
 ---

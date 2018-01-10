@@ -1,20 +1,29 @@
 {% if page.images %}
 
+  <!-- Image Accessibility Text-->
+  {% if page.image_description %}
+    {% assign image_text = page.image_description %}
+  {% else %}
+    {% assign image_text = page.title %}
+  {% endif %}
+
   <!-- Carousel -->
   {% if page.images.size > 1 %}
     <figure>
       <section class="image-list">
         {% for image in page.images %}
+          {% assign image_counter = " #" | append: forloop.index %}
+          {% assign image_display_text = image_text | append: image_counter %}
           <a href="{{ site.images_path }}{{ image }}">
 
             <!-- Single Raw Image -->
             {% if image contains '-raw.' %}
-              <img src="{{ site.images_path }}{{ image }}" />
+              <img alt="{{ image_display_text }}" src="{{ site.images_path }}{{ image }}" />
 
             <!-- Image with small and large variations -->
             {% else %}
               {% assign picture_elements = image | split: '.' %}
-              <img src="{{ site.images_path }}{{ image }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ image }}" />
+              <img alt="{{ image_display_text }}" src="{{ site.images_path }}{{ image }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ image }}" />
             {% endif %}
           </a>
         {% endfor %}
@@ -25,14 +34,15 @@
   <!-- Single Feature Image -->
   {% else %}
     <a href="{{ site.images_path }}{{ page.images.first }}">
+
       <!-- Single Raw Image -->
       {% if page.images.first contains '-raw.' %}
-        <img src="{{ site.images_path }}{{ page.images.first }}" />
+        <img alt="{{ image_text }}" src="{{ site.images_path }}{{ page.images.first }}" />
 
       <!-- Image with small and large variations -->
       {% else %}
         {% assign picture_elements = page.images.first | split: '.' %}
-        <img src="{{ site.images_path }}{{ page.images.first }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ page.images.first }}" />
+        <img alt="{{ image_text }}" src="{{ site.images_path }}{{ page.images.first }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ page.images.first }}" />
       {% endif %}
     </a>
   {% endif %}
