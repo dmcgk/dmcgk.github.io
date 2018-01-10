@@ -1,9 +1,9 @@
+---
+permalink: /about/
+---
 
-# TODO
+Technology and fiction writing miscellanea. You can also find the author at:
 
-- [X] Get Working Copy set up correctly on the iPad.
-- [X] Get a sample Jekyll theme loaded, or copy across the old one.
-- [X] Get a first post written.
-	- [X] Then sync it with Medium.
-	- [X] And with micro.blog.
-	
+- [Twitter](https://twitter.com/dmcgk)
+- [Micro.blog](https://micro.blog/dmcgk)
+- [GitHub](https://github.com/dmcgk)
