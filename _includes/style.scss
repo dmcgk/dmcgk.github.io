@@ -117,7 +117,14 @@ img {
   width: 100%;
   max-width: {{ site-large }};
   margin: 2rem auto;
-  display: block
+  display: block;
+}
+
+%headings > img, p > img {
+  width: auto;
+  margin: auto;
+  display: inline;
+  vertical-align: middle;
 }
 
 li {
