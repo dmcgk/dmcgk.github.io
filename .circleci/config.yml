@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+       - image: circleci/ruby:2.3.4-node-browsers
+    working_directory: ~/dmcgk.github.io
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            bundle install --jobs=4
+      - run: 
+          name: Build site
+          command: |
+            bundle exec jekyll build
+      - run: 
+          name: Run HTML checks
+          command: |
+            bundle exec rake test

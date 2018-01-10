@@ -39,6 +39,7 @@ markdown: kramdown
 exclude:
   - Gemfile
   - Gemfile.lock
+  - Rakefile
   - CNAME
 paginate: 20
 small_image_threshold: 500w
