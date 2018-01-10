@@ -45,7 +45,7 @@ layout: compress
     </header>
       {% unless page.layout == "index" %}
         <article class="e-content">
-        {% unless is_micro_post %}
+        {% unless is_micro_post or page.categories contains "meta" %}
           <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
         {% endunless %}
         {% if page.link %}
