@@ -46,7 +46,7 @@ layout: compress
       {% unless page.layout == "index" %}
         <article class="e-content{% if is_micro_post %} p-name{% endif %}">
         {% unless is_micro_post or page.categories contains "meta" %}
-          <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+          <h1>{% if page.genre %}{{ page.genre | capitalize }}{% if page.type %} {{ page.type | capitalize }}{% endif %}: {% endif %}<a href="{{ page.url }}">{{ page.title }}</a></h1>
         {% endunless %}
         {% if page.link %}
           <p>Via <a class="u-in-reply-to" href="{{ page.link }}" title="Source Link">{{ page.attribution }}:</a></p>
@@ -57,7 +57,7 @@ layout: compress
       {{ content_with_inline_images_unwrapped }}
       {% unless page.layout == "index" %}
         {% include images.html %}
-        <h4><a href="{{ page.url }}" class="u-url dt-published">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a></h4>
+        <h4><a href="{{ page.url }}" class="u-url dt-published">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a>{% if page.prompt %}, <a href="/random/">prompts:</a> <em>{{ page.prompt }}{% endif %}</em></h4>
         </article>
       {% endunless %}
     <footer>
@@ -67,7 +67,7 @@ layout: compress
         {% endunless %}
       {% else %}
         {% unless page.categories contains 'aggregated' %}
-          <p><a href="{{ site.markdown_url }}{{ site.github.repository_nwo }}/master/{{ page.path }}" title="Post Text">{% include markdown.svg %}</a></p>
+          <p><a href="{{ site.markdown_url }}{{ site.github.repository_nwo }}/master/{{ page.path }}" title="Markdown Text">{% include markdown.svg %}</a>{% if page.collection == "fiction" %}&nbsp;<a href="{{ site.epub_path }}{{ page.title }}.epub" title="ePub">{% include epub.svg %}</a>&nbsp;<a href="{{ site.pdf_path }}{{ page.title }}.pdf"} title="PDF">{% include pdf.svg %}</a>{% endif %}</p>
         {% endunless %}
       {% endif %}
       <p class="h-card">&copy; {{ site.time | date: '%Y' }} <span class="p-nickname">@dmcgk</span> <br /> <a class="u-url" href="{{ site.url }}">{{ site.long_title }}</a></p>

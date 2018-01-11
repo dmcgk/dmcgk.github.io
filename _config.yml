@@ -17,6 +17,8 @@ collections:
 permalink: /:slug/
 paginate_path: /archive/:num/
 images_path: /assets/images/
+pdf_path: /assets/pdf/
+epub_path: /assets/epub/
 content_root: articles
 micro_root: micro
 photo_root: photo
