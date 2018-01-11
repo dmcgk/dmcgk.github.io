@@ -16,8 +16,8 @@ collections:
     permalink: /:collection/:title/
 permalink: /:slug/
 paginate_path: /archive/:num/
-images_path: /images/
 content_root: content
+images_path: /assets/images/
 micro_root: micro
 photo_root: photo
 
