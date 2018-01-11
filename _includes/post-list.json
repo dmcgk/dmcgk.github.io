@@ -2,7 +2,7 @@
 {
     "id": "{{ site.url }}{{ post.url }}",
     {% unless is_micro_post %}
-    "title": "{{ post.title }}",
+    "title": "{% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type | capitalize }}{% endif %}: {% endif %}{{ post.title }}",
     {% endunless %}
     {% if post.description %}
     "summary": {{ post.description | jsonify }},

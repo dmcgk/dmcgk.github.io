@@ -3,7 +3,7 @@
 <entry>
     <title>
         {% unless is_micro_post %}
-            {{ post.title }}
+            {% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type | capitalize }}{% endif %}: {% endif %}{{ post.title }}
         {% endunless %}
     </title>
     {% assign author = site.data.authors[page.author] %}
