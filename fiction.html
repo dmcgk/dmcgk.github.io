@@ -1,10 +1,9 @@
 ---
-title: Sample Fiction
-sitemap: false
+layout: index
 ---
 
-<section>
 {% for story in site.fiction %}
-  <a href="{{ story.url }}">{{ story.title }}</a>, a {{ story.genre }} {{ story.type }} completed in {{ story.date | date: '%B %Y' }}
+	<section class="h-entry archive-excerpt">
+	  <p><a href="{{ story.url }}">{{ story.title }}</a>, a {{ story.genre }} {{ story.type }} completed in {{ story.date | date: '%B %Y' }}.</p>
+	</section>
 {% endfor %}
-</section>

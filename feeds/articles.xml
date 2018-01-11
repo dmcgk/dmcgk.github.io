@@ -1,7 +1,8 @@
 ---
 layout: feed-atom
 ---
-{% for post in site.posts limit: site.paginate %}
+{% assign posts_and_collections = site.posts | concat: site.fiction | sort: 'date' | reverse %}
+{% for post in posts_and_collections limit: site.paginate %}
 	{% include post-type.liquid %}
 	{% unless is_micro_post %}
 		{% include post-list.xml %}

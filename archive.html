@@ -1,0 +1,11 @@
+---
+layout: index
+---
+
+{% assign posts_and_collections = site.posts | concat: site.fiction | sort: 'date' | reverse %}
+
+{% for post in posts_and_collections %}
+	<section class="h-entry archive-excerpt">
+	  <p>{% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type | capitalize }}{% endif %}: {% endif %}<a href="{{ post.url }}">{{ post.title }}</a>, posted {{ post.date | date: '%-d %B, %Y' }}.</p>
+	</section>
+{% endfor %}

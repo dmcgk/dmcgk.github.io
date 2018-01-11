@@ -61,14 +61,15 @@ layout: compress
         </article>
       {% endunless %}
     <footer>
-      {% if paginator.total_posts > site.paginate %}
-        {% include paginate.html %}
-      {% endif %}
-      {% unless page.layout == "index" %}
+      {% if page.layout == "index" %}
+        {% unless page.url contains "/archive/" %}
+          {% include paginate.html %}
+        {% endunless %}
+      {% else %}
         {% unless page.categories contains 'aggregated' %}
           <p><a href="{{ site.markdown_url }}{{ site.github.repository_nwo }}/master/{{ page.path }}" title="Post Text">{% include markdown.svg %}</a></p>
         {% endunless %}
-      {% endunless %}
+      {% endif %}
       <p class="h-card">&copy; {{ site.time | date: '%Y' }} <span class="p-nickname">@dmcgk</span> <br /> <a class="u-url" href="{{ site.url }}">{{ site.long_title }}</a></p>
     </footer>
   </body>
