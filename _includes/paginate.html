@@ -1,3 +1,5 @@
+{% assign posts_and_collections = site.posts | concat: site.fiction | sort: 'date' | reverse %}
+
 {% if posts_and_collections.size > site.paginate %}
 <h4>
 	<a href="/archive/">Full Archive</a> ({{ posts_and_collections.size }} posts)
