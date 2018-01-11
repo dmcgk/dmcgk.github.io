@@ -1,6 +1,5 @@
 ---
 title: Projects
-permalink: /now/
 sitemap: false
 ---
 
