@@ -18,12 +18,12 @@
 
             <!-- Single Raw Image -->
             {% if image contains '-raw.' %}
-              <img alt="{{ image_display_text }}" src="{{ site.images_path }}{{ image }}" />
+              <img class="u-photo" alt="{{ image_display_text }}" src="{{ site.images_path }}{{ image }}" />
 
             <!-- Image with small and large variations -->
             {% else %}
               {% assign picture_elements = image | split: '.' %}
-              <img alt="{{ image_display_text }}" src="{{ site.images_path }}{{ image }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ image }}" />
+              <img class="u-photo" alt="{{ image_display_text }}" src="{{ site.images_path }}{{ image }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ image }}" />
             {% endif %}
           </a>
         {% endfor %}
@@ -37,12 +37,12 @@
 
       <!-- Single Raw Image -->
       {% if page.images.first contains '-raw.' %}
-        <img alt="{{ image_text }}" src="{{ site.images_path }}{{ page.images.first }}" />
+        <img class="u-photo" alt="{{ image_text }}" src="{{ site.images_path }}{{ page.images.first }}" />
 
       <!-- Image with small and large variations -->
       {% else %}
         {% assign picture_elements = page.images.first | split: '.' %}
-        <img alt="{{ image_text }}" src="{{ site.images_path }}{{ page.images.first }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ page.images.first }}" />
+        <img class="u-photo" alt="{{ image_text }}" src="{{ site.images_path }}{{ page.images.first }}" srcset="{{ site.images_path }}{{ picture_elements.first }}-small.{{ picture_elements.last }} {{ site.small_image_threshold }}, {{ site.images_path }}{{ page.images.first }}" />
       {% endif %}
     </a>
   {% endif %}

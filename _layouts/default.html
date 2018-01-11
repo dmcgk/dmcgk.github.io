@@ -44,12 +44,12 @@ layout: compress
       {% endif %}
     </header>
       {% unless page.layout == "index" %}
-        <article class="e-content">
+        <article class="e-content{% if is_micro_post %} p-name{% endif %}">
         {% unless is_micro_post or page.categories contains "meta" %}
           <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
         {% endunless %}
         {% if page.link %}
-          <p>Via <a href="{{ page.link }}" title="Source Link">{{ page.attribution }}:</a></p>
+          <p>Via <a class="u-in-reply-to" href="{{ page.link }}" title="Source Link">{{ page.attribution }}:</a></p>
         {% endif %}
       {% endunless %}
       <!-- Workaround for kramdown wrapping inline <img> within <p> -->
@@ -57,7 +57,7 @@ layout: compress
       {{ content_with_inline_images_unwrapped }}
       {% unless page.layout == "index" %}
         {% include images.html %}
-        <h4><a href="{{ page.url }}" class="u-url dt-published{% if is_micro_post %} p-name{% endif %}">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a></h4>
+        <h4><a href="{{ page.url }}" class="u-url dt-published">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a></h4>
         </article>
       {% endunless %}
     <footer>
