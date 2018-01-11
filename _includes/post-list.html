@@ -50,6 +50,11 @@
 </h2>
 {% endunless %}
 
+<!-- Add attribution, if present -->
+{% if post.link %}
+  <p>Via <a class="u-in-reply-to" href="{{ post.link }}" title="Source Link">{{ post.attribution }}:</a></p>
+{% endif %}
+
 <!-- Display post text excerpt -->
 {{ post_text }} 
 

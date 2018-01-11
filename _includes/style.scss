@@ -142,18 +142,6 @@ svg rect {
   stroke: {{ site-colour }};
 }
 
-blockquote {
-  font-style: italic;
-}
-
-blockquote, .micro-excerpt > :not(img) {
-  padding: 1rem 2rem;
-  margin: 0 auto;
-  border-style: solid;
-  border-width: 0px 0px 0px 7px;
-  border-color: {{ site-colour }};
-}
-
 figcaption {
   text-align: center;
   font-style: italic;
@@ -165,6 +153,31 @@ section > :not(img), article > :not(img) {
   margin: 1rem auto;
 }
 
+blockquote {
+  padding: 0 1rem;
+  font-style: italic;
+}
+
+blockquote, .micro-excerpt > :not(img) {
+  margin: 0 auto;
+  border-style: solid;
+  border-width: 0px 0px 0px 7px;
+  border-color: {{ site-colour }};
+}
+
+.micro-excerpt > :not(img) {
+  padding: 1rem 2rem;
+}
+
+.micro-excerpt ul {
+  list-style-type: none;
+}
+
+.article-excerpt blockquote, .micro-excerpt blockquote,  {
+  padding: 0;
+  border-style: none;
+}
+
 .article-excerpt > %headings, .micro-excerpt > %headings {
   margin: 0 auto; 
 }
@@ -172,10 +185,6 @@ section > :not(img), article > :not(img) {
 .article-excerpt {
   margin-top: 4rem;
   margin-bottom: 4rem;
-}
-
-.micro-excerpt ul {
-  list-style-type: none;
 }
 
 .image-list {
