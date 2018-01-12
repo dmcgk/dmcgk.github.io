@@ -132,15 +132,10 @@ li {
 }
 
 svg {
-  width: 1.5rem;
-  height: auto;
+  width: auto;
+  height: 1rem;
   vertical-align: middle;
-  margin: 1rem;
-  fill: {{ site-colour }};
-}
-
-svg rect {
-  stroke: {{ site-colour }};
+  fill: crimson;
 }
 
 figcaption {
