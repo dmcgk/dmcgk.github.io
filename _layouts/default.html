@@ -46,7 +46,7 @@ layout: compress
       {% unless page.layout == "index" %}
         <article class="e-content{% if is_micro_post %} p-name{% endif %}">
         {% unless is_micro_post or page.categories contains "meta" %}
-          <h1>{% if page.genre %}{{ page.genre | capitalize }}{% if page.type %} {{ page.type | capitalize }}{% endif %}: {% endif %}<a href="{{ page.url }}">{{ page.title }}</a></h1>
+          <h1>{% if page.genre %}{{ page.genre | capitalize }}{% if page.type %} {{ page.type }}{% endif %}: <em>{% endif %}<a href="{{ page.url }}">{{ page.title }}</a>{% if page.genre %}</em>{% endif %}</h1>
         {% endunless %}
         {% if page.link %}
           <p>Via <a class="u-in-reply-to" href="{{ page.link }}" title="Source Link">{{ page.attribution }}:</a></p>

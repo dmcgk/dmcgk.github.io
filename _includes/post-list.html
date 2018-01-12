@@ -46,7 +46,7 @@
 <!-- Article title -->
 {% unless is_micro_post %}
 <h2>
-  {% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type | capitalize }}{% endif %}: {% endif %}<a href="{{ post.url }}" class="p-name">{{ post.title }}</a>
+  {% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}{% endif %}: <em>{% endif %}<a href="{{ post.url }}" class="p-name">{{ post.title }}</a>{% if post.genre %}</em>{% endif %}
 </h2>
 {% endunless %}
 

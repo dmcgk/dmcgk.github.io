@@ -13,7 +13,7 @@ primary_colour: crimson;
 collections:
   fiction:
     output: true
-    permalink: /:collection/:title/
+    permalink: /:collection/:slug/
 permalink: /:slug/
 paginate_path: /archive/:num/
 images_path: /assets/images/
