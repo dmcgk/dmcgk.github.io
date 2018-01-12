@@ -44,4 +44,4 @@ An automatically updating list of the items I'm currently (claiming to be) worki
 
 <!-- Shame counter -->
 {% assign total_count = yearly_project_count | plus: yearly_site_project_count %}
-I have completed {{ total_count }} project{% if total_count > 1 %}s{% endif %} so far in {{ today_year }}.
+I have completed {{ total_count }} project{% if total_count != 1 %}s{% endif %} so far in {{ today_year }}.
