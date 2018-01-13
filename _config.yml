@@ -44,6 +44,7 @@ defaults:
     values:
       layout: default
       author: darren
+      image: /assets/images/logo.png
 markdown: kramdown
 exclude:
   - Gemfile
