@@ -19,13 +19,17 @@ layout: compress
     {% include authentication.html %}
     {% include mentions.html %}
 	{% seo title=false %}
-    {% assign author = site.data.authors[site.author] %}
+	{% if page.author %}
+	  {% assign author = site.data.authors[page.author] %}
+	{% else %}
+      {% assign author = site.data.authors[site.author] %}
+    {% endif %}
     {% if author %}
       {% for url in author.urls %}
         <link rel="me" href="{{ url }}"/>
       {% endfor %}
-      <link type="text/plain" rel="author" href="/humans.txt" />
     {% endif %}
+    <link type="text/plain" rel="author" href="/humans.txt" />
     <style>
       {% capture site-styles %}{% include style.scss %}{% endcapture %}
       {{ site-styles | scssify }}
