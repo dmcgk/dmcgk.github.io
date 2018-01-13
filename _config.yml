@@ -28,6 +28,12 @@ photo_root: photo
 twitter:
   username: dmcgk
 author: darren
+social:
+  name: Darren McGuicken
+  links:
+    - https://twitter.com/dmcgk
+    - https://micro.blog/dmcgk
+    - https://github.com/dmcgk
 
 # Build
 lang: en
