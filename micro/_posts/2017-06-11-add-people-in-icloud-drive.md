@@ -1,5 +1,6 @@
 ---
 date: 2017-06-11 12:34:00 +01:00
+title: Add People In iCloud Drive
 images: 
     - 2017-06-11-icloud-sharing-1-raw.jpg
     - 2017-06-11-icloud-sharing-2-raw.jpg
