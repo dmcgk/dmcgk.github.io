@@ -61,7 +61,7 @@ layout: compress
       {{ content_with_inline_images_unwrapped }}
       {% unless page.layout == "index" %}
         {% include images.html %}
-        <h4><a href="{{ page.url }}" class="u-url dt-published">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a>{% if page.prompt %}, <a href="/random/">prompts:</a> <em>{{ page.prompt }}{% endif %}</em></h4>
+        <h4><a href="{{ page.url }}" class="u-url dt-published">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a>{% if page.prompt %}, <a href="/random/">prompts</a>: <em>{{ page.prompt }}{% endif %}</em></h4>
         </article>
       {% endunless %}
     <footer>
