@@ -21,9 +21,15 @@
 
   <!-- 'Read More' placeholder & workaround for lack of Array element addition in Liquid -->
   {% assign read_more_elements = "" %}
-  {% if post.images %}
+  {% if post.images or post.image %}
     {% assign read_more_elements = read_more_elements | append: "image" %}
-    {% if post.images.size > 1 %}{% assign read_more_elements = read_more_elements | append: "s" %}{% endif %}
+    {% if post.image %}
+      {% assign non_featured_images = post.images | join: "," %}
+      {% assign image_collection = post.image | append: "," | append: non_featured_images | split: "," %}
+    {% else %}
+      {% assign image_collection = post.images %}
+    {% endif %}
+    {% if image_collection.size > 1 %}{% assign read_more_elements = read_more_elements | append: "s" %}{% endif %}
     {% assign read_more_elements = read_more_elements | append: "," %}
   {% endif %}
   {% if post.link %}
