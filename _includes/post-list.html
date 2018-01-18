@@ -60,13 +60,23 @@
 
 <!-- Display hashtags for micro posts -->
 {% if is_micro_post %}
-<p class="categories">
+  {% assign category_array = "" %}
+
   {% for category in post.categories %}
     {% unless category == site.content_root or category == site.micro_root or category == site.photo_root %}
-      #{{ category }} 
+      {% assign category_array = category_array | append: category | append: "," %}
     {% endunless %}
   {% endfor %}
-</p>
+
+  {% assign filtered_categories = category_array | split: "," %}
+
+  {% if filtered_categories.size > 0 %}
+    <p class="categories">
+    {% for category in filtered_categories | split: "," %}
+      #{{ category }} 
+    {% endfor %}
+    </p>
+  {% endif %}
 {% endif %}
 
 <!-- Close separators -->
