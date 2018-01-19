@@ -12,7 +12,7 @@
   <section class="h-entry micro-excerpt">
 {% else %}
   <!-- Begin micro post excerpt -->
-  <section class="h-entry article-excerpt">
+  <section class="h-entry article-excerpt{% if post.collection %} {{ post.collection }}{% endif %}">
 {% endif %}
 
 <!-- Post date -->
@@ -52,7 +52,7 @@
 <!-- Article title -->
 {% unless is_micro_post %}
 <h2>
-  {% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}{% endif %}: <em>{% endif %}<a href="{{ post.url }}" class="p-name">{{ post.title }}</a>{% if post.genre %}</em>{% endif %}
+  <a href="{{ post.url }}" class="p-name">{% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}{% endif %}: <em>{% endif %}{{ post.title }}</a>{% if post.genre %}</em>{% endif %}
 </h2>
 {% endunless %}
 

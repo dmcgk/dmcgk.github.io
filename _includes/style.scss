@@ -14,6 +14,7 @@
 {% assign site-small = "42rem" %}
 {% assign site-medium = "48rem" %}
 {% assign site-large = "64rem" %}
+{% assign fiction-inset = "40rem" %}
 
 /* Web Fonts */
 
@@ -201,6 +202,21 @@ blockquote, .micro-excerpt > :not(img) {
   border-radius: 15px;
 }
 
+.fiction p {
+  line-height: 1.6;
+  margin: 0 auto;
+  padding: 0;
+  max-width: {{ fiction-inset }};
+}
+
+.fiction h2+p {
+  margin-top: 1rem;
+}
+
+.fiction p+p {
+  text-indent: 1rem;
+}
+
 p.categories {
   color: gray;
   padding-top: 0;
@@ -221,6 +237,10 @@ p.categories {
 
   section > :not(img), article > :not(img) {
     max-width: 80%;
+  }
+
+  .fiction p {
+    max-width: 62%;
   }
 
 }
@@ -255,6 +275,10 @@ p.categories {
 
   .article-excerpt > %headings, .micro-excerpt > %headings {
     padding: 0;
+  }
+
+  .fiction p {
+    max-width: 80%;
   }
 
 }
