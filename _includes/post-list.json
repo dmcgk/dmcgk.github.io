@@ -8,6 +8,9 @@
     "summary": {{ post.description | jsonify }},
     {% endif %}
     "url": "{{ site.url }}{{ post.url }}",
+    {% if post.link %}
+    "external_url": "{{ post.link }}",
+    {% endif %}
     {% if post.images %}
     "image": "{{ site.url }}{{ site.images_path }}{{ post.images.first }}",
     {% capture image_string %}{% for image in post.images%}<img src='{{ site.url }}{{ site.images_path }}{{ image }}'>{% endfor %}{% endcapture %}
