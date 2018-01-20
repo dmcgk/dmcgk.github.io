@@ -35,4 +35,18 @@
     "banner_image": "{{ site.url }}{{ post.banner }}",
     {% endif %}
     "date_published": "{{ post.date | date_to_xmlschema }}"
+    {% if post.collection == "fiction" %}
+    , "attachments": [
+        {
+            "url": "{{ site.url }}{{ site.epub_path }}{{ post.title }}.epub",
+            "mime_type": "application/epub+zip",
+            "title": "{{ post.title }}"
+        }, 
+        {
+            "url": "{{ site.url }}{{ site.pdf_path }}{{ post.title }}.pdf",
+            "mime_type": "application/pdf",
+            "title": "{{ post.title }}"
+        }
+    ]
+    {% endif %}
 }
