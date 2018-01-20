@@ -1,7 +1,8 @@
 {% assign posts_and_collections = site.posts | concat: site.fiction | sort: 'date' | reverse %}
 
 {% if posts_and_collections.size > site.paginate %}
-	<a href="/archive/">archive</a> 
+	<a href="/archive/">archive</a>
 	<!-- Uncomment to enable post counter -->
 	<!-- ({{ posts_and_collections.size }} posts) -->
+	<br />
 {% endif %}
