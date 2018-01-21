@@ -11,11 +11,9 @@
     {% if post.link %}
     "external_url": "{{ post.link }}",
     {% endif %}
-    {% if post.images %}
-    "image": "{{ site.url }}{{ site.images_path }}{{ post.images.first }}",
-    {% capture image_string %}{% for image in post.images%}<img src='{{ site.url }}{{ site.images_path }}{{ image }}'>{% endfor %}{% endcapture %}
-    {% else %}
-    {% assign image_string = "" %}
+    {% include images-list.html %}
+    {% if main_image && main_image != "" %}
+    "image": "{{ site.url }}{{ main_image }}",
     {% endif %}
     {% if post.link %}
     {% capture link_attribution %}<p>Via <a href='{{ post.link }}' title='Source Link'>{{ post.attribution }}:</a></p>{% endcapture %}

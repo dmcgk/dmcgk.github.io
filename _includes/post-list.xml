@@ -22,11 +22,7 @@
         </summary>
     {% endif %}
     <content type="html">
-        {% if post.images %}
-            {% capture image_string %}{% for image in post.images%}<img src='{{ site.url }}{{ site.images_path }}{{ image }}'>{% endfor %}{% endcapture %}
-        {% else %}
-            {% assign image_string = "" %}
-        {% endif %}
+        {% include images-list.html %}
         {% if post.link %}
             {% capture link_attribution %}<p>Via <a href='{{ post.link }}' title='Source Link'>{{ post.attribution }}:</a></p>{% endcapture %}
         {% else %}
