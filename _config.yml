@@ -6,6 +6,11 @@ markdown_url: https://raw.githubusercontent.com/
 repository: dmcgk/dmcgk.github.io
 logo: /assets/images/logo.png
 
+# Authentication
+key_fingerprint: 6391E804
+key_path: /keys/6391E804.txt
+key_path_friendly: /publickey/
+
 # Layout
 spacer: "&nbsp;&middot;&nbsp;"
 primary_colour: crimson;
