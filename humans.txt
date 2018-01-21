@@ -12,4 +12,4 @@ Location: {{ author.location }}
 /* SITE */
 
 Last update: {{ site.time | date: '%Y/%m/%d' }} 
-Components: Markdown, Jekyll, GitHub Pages.
+Components: {% for component in site.data.components %}{{ component.name }}{% if forloop.last %}.{% else %}, {% endif %}{% endfor %}
