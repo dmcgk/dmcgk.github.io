@@ -5,7 +5,7 @@
   {% else %}
     {% assign image_collection = post.images %}
   {% endif %}
-  {% capture image_string %}{% assign main_image = "" %}{% for image in image_collection %}{% if post.image_description %}{% assign image_text = post.image_description %}{% else %}{% assign image_text = post.title %}{% endif %}{% if image_collection.size > 1 %}{% assign image_text = image_text | append: " #" | append: forloop.index %}{% endif %}{% if image contains site.images_path %}{% assign image_location = image %}{% else %}{% assign image_location = site.images_path | append: image %}{% endif %}<img alt="{{ image_text }}" src='{{ image_location }}'>{% if forloop.first %}{% assign main_image = image_location %}{% endif %}{% endfor %}{% endcapture %}
+  {% capture image_string %}{% assign main_image = "" %}{% for image in image_collection %}{% if post.image_description %}{% assign image_text = post.image_description %}{% else %}{% assign image_text = post.title %}{% endif %}{% if image_collection.size > 1 %}{% assign image_text = image_text | append: " #" | append: forloop.index %}{% endif %}{% if image contains site.images_path %}{% assign image_location = image %}{% else %}{% assign image_location = site.images_path | append: image %}{% endif %}<img alt='{{ image_text }}' src='{{ image_location }}'>{% if forloop.first %}{% assign main_image = image_location %}{% endif %}{% endfor %}{% endcapture %}
 {% else %}
     {% assign image_string = "" %}
 {% endif %}
