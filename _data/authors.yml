@@ -4,6 +4,7 @@ darren:
   avatar: https://fernseed.org/images/avatar.jpg
   twitter: dmcgk
   email: feedback@fernseed.org
+  key: https://fernseed.org/publickey/
   urls: 
     - https://twitter.com/dmcgk
     - https://github.com/dmcgk
