@@ -1,6 +1,8 @@
 ---
 title: Projects
 sitemap: false
+categories:
+    - meta
 ---
 
 An automatically updating list of the items I'm currently (claiming to be) working on. It will live here as a shaming reminder for future-me to actually complete them.
