@@ -15,6 +15,7 @@
 {% assign site-medium = "48rem" %}
 {% assign site-large = "64rem" %}
 {% assign fiction-inset = "40rem" %}
+{% assign article-spacing = "15vh" %}
 
 /* Web Fonts */
 
@@ -58,11 +59,15 @@
 /* Styles */
 
 @include headings-all(){
-  margin-top: 2rem; 
-  margin-bottom: 1rem; 
+  text-align: left;
   font-weight: normal;
+  line-height: 1.2;
   color: {{ site-colour }};
   @extend %headings !optional;
+}
+
+html {
+  height: 100%;
 }
 
 body { 
@@ -74,7 +79,11 @@ body {
   text-align: justify;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  min-height: 100%;
+}
 
+p {
   /* Browser-specific Hyphenation Fix */
   -ms-word-break: break-all;
   word-break: break-all;
@@ -94,15 +103,20 @@ pre, code {
   font-size: smaller;
 }
 
-header, footer { 
+header %headings, footer { 
   padding: 4rem 2rem;
   text-align: center; 
 }
 
-header %headings {
-  font-weight: bold;
-  font-size: 4rem;
-  margin-bottom: 0; 
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+header svg {
+  height: 4rem;
 }
 
 a {
@@ -150,6 +164,10 @@ section > :not(img), article > :not(img) {
   margin: 1rem auto;
 }
 
+section + footer {
+  position: relative;
+}
+
 blockquote {
   padding: 0 1rem;
   font-style: italic;
@@ -162,7 +180,24 @@ blockquote, .micro-excerpt > :not(img) {
   border-color: {{ site-colour }};
 }
 
-.micro-excerpt > :not(img) {
+article {
+  padding: {{ article-spacing }} 0;
+}
+
+article p + %headings {
+  margin-top: 2rem;
+}
+
+article %headings + p, .fiction %headings + p {
+  margin-top: 2rem;
+}
+
+article > %headings, .micro-excerpt > %headings, .article-excerpt > %headings, {
+  margin: 0 auto; 
+  padding: 0 2rem;
+}
+
+.micro-excerpt > :not(img):not(%headings) {
   padding: 1rem 2rem;
 }
 
@@ -170,14 +205,15 @@ blockquote, .micro-excerpt > :not(img) {
   list-style-type: none;
 }
 
-.article-excerpt blockquote, .micro-excerpt blockquote,  {
+.micro-excerpt blockquote, .article-excerpt blockquote,   {
   padding: 0;
   border-style: none;
 }
 
-.article-excerpt > %headings, .micro-excerpt > %headings {
-  margin: 0 auto; 
-  padding-bottom: 0;
+.micro-excerpt > .categories {
+  color: gray;
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .article-excerpt {
@@ -210,18 +246,21 @@ blockquote, .micro-excerpt > :not(img) {
   max-width: {{ fiction-inset }};
 }
 
-.fiction h2+p {
-  margin-top: 1rem;
-}
-
-.fiction p+p {
+.fiction p + p {
   text-indent: 1rem;
 }
 
-p.categories {
-  color: gray;
-  padding-top: 0;
-  margin-top: 0;
+.tagline {
+  text-align: right;
+}
+
+.navigation-element {
+  display: inline;
+  margin-right: 1rem;
+}
+
+a.navigation-element:hover, header a:hover {
+  text-decoration: none;
 }
 
 #genre {
@@ -232,12 +271,8 @@ p.categories {
 
 @include respond-to({{ site-large }}) {
 
-  header %headings {
-    font-size: 3rem;
-  }
-
   section > :not(img), article > :not(img) {
-    max-width: 80%;
+    max-width: 70%;
   }
 
   .fiction p {
@@ -246,19 +281,30 @@ p.categories {
 
 }
 
-@include respond-to({{ site-small }}) {
+@include respond-to({{ site-medium }}) {
 
   body {
     text-align: left;
+  }
+
+}
+
+@include respond-to({{ site-small }}) {
+
+  body {
     font-size: 1rem;
   }
 
   header, footer {
-    padding: 1rem 0rem;
+    padding: 3rem 1rem;
   }
 
-  header %headings {
-    font-size: 2rem;  
+  header svg {
+    height: 3rem;
+  }
+
+  section > :not(img), article > :not(img) {
+    max-width: 80%;
   }
 
   blockquote {
@@ -272,10 +318,6 @@ p.categories {
   .article-excerpt {
     margin-top: 2rem;
     margin-bottom: 2rem;
-  }
-
-  .article-excerpt > %headings, .micro-excerpt > %headings {
-    padding: 0;
   }
 
   .fiction p {

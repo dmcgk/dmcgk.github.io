@@ -36,22 +36,28 @@ layout: compress
     </style>
   </head>
   <body>
-    <header>
-      <h2><a href="/">{{ site.title | default: site.github.repository_name }}</a></h2>
-      {% if site.data.navigation.size > 0 %}
+      {% if page.layout == "index" %}
+      <header>
+        <h2><a class="u-url" href="/">{% include logo.svg %}</a></h2>
+        {% if site.data.navigation.size > 0 %}
         <nav>
           {% for nav_item in site.data.navigation %}
             <a href="{{ nav_item.link }}">{{ nav_item.title }}</a>
             {% unless forloop.last %}{{ site.spacer }}{% endunless %}
           {% endfor %}
         </nav>
+        {% endif %}
+      </header>
       {% endif %}
-    </header>
       {% unless page.layout == "index" %}
+        {% assign display_date = page.date | default: site.time %}
         <article class="e-content{% if is_micro_post %} p-name{% endif %}{% if page.collection %} {{ page.collection }}{% endif %}">
-        {% unless is_micro_post or page.categories contains "meta" %}
-          <h1>{% if page.genre %}{{ page.genre | capitalize }}{% if page.type %} {{ page.type }}{% endif %}: <em>{% endif %}<a href="{{ page.url }}">{{ page.title }}</a>{% if page.genre %}</em>{% endif %}</h1>
-        {% endunless %}
+        {% if is_micro_post %}
+          <h1><a class="navigation-element" href="/">❬</a><a href="{{ page.url }}" class="u-url dt-published">{{ display_date | date: '%-d %B %Y, %H:%M' }}</a></h1>
+        {% else %}
+          <h1><a class="navigation-element" href="/">❬</a><a class="u-url" href="{{ page.url }}">{{ page.title }}</a></h1>
+          {% if page.genre %}<h3>{{ page.genre | capitalize }}{% if page.type %} {{ page.type }}{% endif %}<em>{% endif %}{% if page.genre %}</em></h3>{% endif %}
+        {% endif %}
         {% if page.link %}
           <p>Via <a class="u-in-reply-to" href="{{ page.link }}" title="Source Link">{{ page.attribution }}:</a></p>
         {% endif %}
@@ -61,7 +67,9 @@ layout: compress
       {{ content_with_inline_images_unwrapped }}
       {% unless page.layout == "index" %}
         {% include images.html %}
-        <h4><a href="{{ page.url }}" class="u-url dt-published">{{ page.date | date: '%-d %B %Y, %H:%M' }}</a>{% if page.prompt %}, <a href="/random/">prompts</a>: <em>{{ page.prompt }}{% endif %}</em></h4>
+        {% unless page.categories contains "meta" %}
+        <h4 class="tagline h-card"><span class="p-author p-nickname">@{{ author.twitter }}</span>{{ site.spacer }}<a href="{{ site.url }}">{{ site.long_title }}</a>{% unless is_micro_post %}{{ site.spacer }}<time class="dt-published" datetime="{{ display_date | date: '%Y-%m-%d %H:%M:%S' }}">{{ display_date | date: '%Y-%m-%d' }}</time>{% endunless %}</h4>{% if page.prompt %}<h4 class="tagline"><a href="/random/"><em>{{ page.prompt }}{% endif %}</em></a></h4>
+        {% endunless %}
         </article>
       {% endunless %}
     <footer>
@@ -71,11 +79,9 @@ layout: compress
             {% include paginate.html %}
           {% endunless %}
         {% else %}
-          {% unless page.categories contains 'aggregated' %}
-             {% if page.collection == "fiction" %}<a href="{{ site.epub_path }}{{ page.title }}.epub" title="ePub">{% include document.svg %}</a>&nbsp;{% endif %}<a href="{{ site.markdown_url }}{{ site.github.repository_nwo }}/master/{{ page.path }}" title="Markdown (Plain Text)">{% include markdown.svg %}</a>{% if page.collection == "fiction" %}&nbsp;<a href="{{ site.pdf_path }}{{ page.title }}.pdf"} title="PDF">{% include document-inverted.svg %}</a>{% endif %}<br />
-          {% endunless %}
+          {% unless page.categories contains 'aggregated' %}&nbsp;{% if page.collection == "fiction" %}<a href="{{ site.epub_path }}{{ page.title }}.epub" title="ePub">{% include document.svg %}</a>&nbsp;{% endif %}<a href="{{ site.markdown_url }}{{ site.github.repository_nwo }}/master/{{ page.path }}" title="Markdown (Plain Text)">{% include markdown.svg %}</a>{% if page.collection == "fiction" %}&nbsp;<a href="{{ site.pdf_path }}{{ page.title }}.pdf" title="PDF">{% include document-inverted.svg %}</a>{% endif %}{% endunless %}<br />
         {% endif %}
-        <span class="h-card">&copy; {{ site.time | date: '%Y' }} <span class="p-nickname">@dmcgk</span> <br /> <a class="u-url" href="{{ site.url }}">{{ site.long_title }}</a></span>
+        &copy;&nbsp;{{ site.time | date: '%Y' }}
       </p>
     </footer>
   </body>
