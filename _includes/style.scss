@@ -103,6 +103,10 @@ pre, code {
   font-size: smaller;
 }
 
+header svg {
+  height: 4rem;
+}
+
 header %headings, footer { 
   padding: 4rem 2rem;
   text-align: center; 
@@ -113,10 +117,6 @@ footer {
   bottom: 0;
   right: 0;
   left: 0;
-}
-
-header svg {
-  height: 4rem;
 }
 
 a {
@@ -295,7 +295,7 @@ a.navigation-element:hover, header a:hover {
     font-size: 1rem;
   }
 
-  header, footer {
+  header %headings, footer {
     padding: 3rem 1rem;
   }
 
