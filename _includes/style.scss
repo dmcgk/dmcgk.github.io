@@ -308,11 +308,7 @@ a.navigation-element:hover, header a:hover {
     max-width: 80%;
   }
 
-  blockquote {
-    border-width: 0px 0px 0px 3px;
-  }
-
-  .micro-excerpt > :not(img) {
+  blockquote, .micro-excerpt > :not(img) {
     border-width: 0px 0px 0px 0px;
   }
 
