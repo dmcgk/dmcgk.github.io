@@ -176,7 +176,6 @@ section + footer {
 
 blockquote {
   padding: 0 1rem;
-  font-style: italic;
 }
 
 blockquote, .micro-excerpt > :not(img) {
@@ -311,6 +310,10 @@ a.navigation-element:hover, header a:hover {
 
   section > :not(img), article > :not(img) {
     max-width: 80%;
+  }
+
+  blockquote {
+    font-style: italic;
   }
 
   blockquote, .micro-excerpt > :not(img) {
