@@ -51,9 +51,10 @@
 
 <!-- Article title -->
 {% unless is_micro_post %}
-<h2>
-  <a href="{{ post.url }}" class="p-name">{% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}{% endif %}: <em>{% endif %}{{ post.title }}</a>{% if post.genre %}</em>{% endif %}
-</h2>
+  <h2>
+    <a href="{{ post.url }}" class="p-name">{{ post.title }}</a>
+  </h2>
+    {% if post.genre %}<h3>{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}</h3>{% endif %}{% endif %}
 {% endunless %}
 
 <!-- Add attribution, if present -->
