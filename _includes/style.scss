@@ -225,6 +225,10 @@ ul li {
   list-style-type: none;
 }
 
+.micro-excerpt ul li {
+  margin: 0 auto;
+}
+
 .micro-excerpt blockquote, .article-excerpt blockquote,   {
   padding: 0;
   border-style: none;
@@ -255,10 +259,6 @@ ul li {
   vertical-align: middle;
 }
 
-.highlight {
-  border-radius: 15px;
-}
-
 .fiction p {
   margin: 1rem auto 0 auto;
   line-height: 1.6;
@@ -268,6 +268,10 @@ ul li {
 .fiction > p + p {
   margin: 0 auto;
   text-indent: 1rem;
+}
+
+.highlight {
+  border-radius: 15px;
 }
 
 .tagline {
