@@ -14,12 +14,17 @@ An automatically updating list of the items I'm currently (claiming to be) worki
 ### Here
 
 {% assign yearly_site_project_count = 0 %}
+{% assign yearly_competition_count = 0 %}
 
 {% if site.fiction.size > 0 %}
   {% for story in site.fiction %}
   {% assign story_year = story.date | date: '%Y' %}
   {% if story_year == today_year %}
+  {% if story.competition %}
+  {% assign yearly_competition_count = yearly_competition_count | plus: 1 %}
+  {% else %}
 	{% assign yearly_site_project_count = yearly_site_project_count | plus: 1 %}
+  {% endif %}
   {% endif %}
   - ~~_[{{ story.title }}]({{ story.link }})_, a {{ story.genre }} {{ story.type }}~~, completed in {{ story.date | date: '%B %Y' }}.
   {% endfor %}
@@ -44,5 +49,7 @@ An automatically updating list of the items I'm currently (claiming to be) worki
   {% endfor %}
 {% endif %}
 
+{% assign total_yearly_project_count = yearly_project_count | plus: yearly_competition_count %}
+
 <!-- Shame counter -->
-I have completed {{ yearly_site_project_count }} writing exercise{% if yearly_site_project_count != 1 %}s{% endif %} and {{ yearly_project_count }} longer-form project{% if yearly_project_count != 1 %}s{% endif %} so far in {{ today_year }}.
+I have completed {{ yearly_site_project_count }} writing exercise{% if yearly_site_project_count != 1 %}s{% endif %} and {{ total_yearly_project_count }} longer-form project{% if total_yearly_project_count != 1 %}s{% endif %} so far in {{ today_year }}.

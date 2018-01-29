@@ -68,8 +68,7 @@ layout: compress
       {% unless page.layout == "index" %}
         {% include images.html %}
         {% unless page.categories contains "meta" %}
-        <h4 class="tagline h-card"><span class="p-author p-nickname">@{{ author.twitter }}</span>{{ site.spacer }}<a href="{{ site.url }}">{{ site.long_title }}</a>{% unless is_micro_post %}{{ site.spacer }}<time class="dt-published" datetime="{{ display_date | date_to_xmlschema }}">{{ display_date | date: '%Y-%m-%d' }}</time>{% endunless %}</h4>{% if page.prompt %}<h4 class="tagline"><a href="/random/"><em>{{ page.prompt }}{% endif %}</em></a></h4>
-        {% endunless %}
+        <h4 class="tagline h-card"><span class="p-author p-nickname">@{{ author.twitter }}</span>{{ site.spacer }}<a href="{{ site.url }}">{{ site.long_title }}</a>{% unless is_micro_post %}{{ site.spacer }}<time class="dt-published" datetime="{{ display_date | date_to_xmlschema }}">{{ display_date | date: '%Y-%m-%d' }}</time>{% endunless %}</h4>{% if page.prompt %}<h4 class="tagline"><a href="/random/"><em>{{ page.prompt }}{% endif %}</em></a></h4>{% if page.competition %}<h4 class="tagline"><a href="{{ page.source }}">{{ page.competition }}</a></h4>{% endif %}{% endunless %}
         </article>
       {% endunless %}
     <footer>
