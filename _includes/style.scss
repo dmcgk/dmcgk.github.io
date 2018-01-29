@@ -94,6 +94,15 @@ p {
   hyphens: auto;
 }
 
+p + %headings {
+  margin-top: 1rem;
+}
+
+hr {
+  padding: 1rem;
+  border-width: 0;
+}
+
 pre { 
   word-wrap: normal; 
   padding: 2rem 1rem;
@@ -148,10 +157,6 @@ img {
   vertical-align: middle;
 }
 
-li {
-  margin-right: 1rem;
-}
-
 svg {
   width: auto;
   height: 1rem;
@@ -166,8 +171,17 @@ figcaption {
 }
 
 section > :not(img), article > :not(img) {
-  max-width: {{ site-medium }};
   margin: 1rem auto;
+  padding: 0 2rem;
+  max-width: {{ site-medium }};
+}
+
+article > %headings {
+  margin: 0 auto;
+}
+
+%headings + %headings {
+  margin: 0 auto;
 }
 
 section + footer {
@@ -189,21 +203,22 @@ article {
   padding: {{ top-spacing }} 0 {{ bottom-spacing }} 0;
 }
 
-article p + %headings {
-  margin-top: 2rem;
+ul li {
+  margin: 0 2rem;
 }
 
-article %headings + p, .fiction %headings + p {
-  margin-top: 2rem;
+.micro-excerpt > :last-child, .article-excerpt > :last-child {
+  padding: 0 2rem 1rem 2rem;
+  margin: 0 auto;
 }
 
-article > %headings, .micro-excerpt > %headings, .article-excerpt > %headings, {
-  margin: 0 auto; 
+.micro-excerpt > :first-child, .article-excerpt > :first-child {
+  padding: 1rem 2rem 0 2rem;
+  margin: 0 auto;
+}
+
+.micro-excerpt > :not(img), .article-excerpt > :not(img) {
   padding: 0 2rem;
-}
-
-.micro-excerpt > :not(img):not(%headings) {
-  padding: 1rem 2rem;
 }
 
 .micro-excerpt ul {
@@ -213,17 +228,17 @@ article > %headings, .micro-excerpt > %headings, .article-excerpt > %headings, {
 .micro-excerpt blockquote, .article-excerpt blockquote,   {
   padding: 0;
   border-style: none;
-}
-
-.micro-excerpt > .categories {
-  color: gray;
-  padding-top: 0;
-  margin-top: 0;
+  font-style: italic;
 }
 
 .article-excerpt {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin: 2rem 0;
+}
+
+.categories {
+  color: gray;
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .image-list {
@@ -245,13 +260,13 @@ article > %headings, .micro-excerpt > %headings, .article-excerpt > %headings, {
 }
 
 .fiction p {
+  margin: 1rem auto 0 auto;
   line-height: 1.6;
-  margin: 0 auto;
-  padding: 0;
   max-width: {{ fiction-inset }};
 }
 
-.fiction p + p {
+.fiction > p + p {
+  margin: 0 auto;
   text-indent: 1rem;
 }
 
@@ -300,15 +315,11 @@ a.navigation-element:hover, header a:hover {
     font-size: 1rem;
   }
 
-  header %headings, footer {
-    padding: 3rem 1rem;
-  }
-
   header svg {
     height: 3rem;
   }
 
-  section > :not(img), article > :not(img) {
+  section > :not(img), article > :not(img){
     max-width: 80%;
   }
 
@@ -320,13 +331,16 @@ a.navigation-element:hover, header a:hover {
     border-width: 0px 0px 0px 0px;
   }
 
-  .article-excerpt {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-
   .fiction p {
     max-width: 80%;
+  }
+
+  .micro-excerpt > :last-child, .article-excerpt > :last-child {
+    padding: 0 0 1rem 0;
+  }
+
+  .micro-excerpt > :first-child, .article-excerpt > :first-child {
+    padding: 1rem 0 0 0;
   }
 
 }
