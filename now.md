@@ -21,7 +21,7 @@ An automatically updating list of the items I'm working on in {{ current_year }}
 {% endif %}
 
   {% for story in filtered_fiction %}
-  - ~~_[{{ story.title }}]({{ story.link }})_, a {{ story.genre }} {{ story.type }}~~, completed in {{ story.date | date: '%B %Y' }}.
+  - ~~_[{{ story.title }}]({{ story.link }})_, a {{ story.genre }} {{ story.type }}~~, completed in {{ story.date | date: '%B' }}.
   {% if story.competition %}
   {% assign yearly_competition_count = yearly_competition_count | plus: 1 %}
   {% endif %}
@@ -45,4 +45,4 @@ An automatically updating list of the items I'm working on in {{ current_year }}
 {% assign total_yearly_project_count = completed_projects.size | plus: yearly_competition_count %}
 {% assign total_writing_exercise_count = filtered_fiction.size | minus: yearly_competition_count %}
 
-I have completed {{ total_writing_exercise_count }} writing exercise{% if total_writing_exercise_count != 1 %}s{% endif %} and {{ total_yearly_project_count }} longer-form project{% if total_yearly_project_count != 1 %}s{% endif %} so far in {{ current_year }}.
+I have completed {{ total_writing_exercise_count }} writing exercise{% if total_writing_exercise_count != 1 %}s{% endif %} and {{ total_yearly_project_count }} longer-form project{% if total_yearly_project_count != 1 %}s{% endif %} so far this year.
