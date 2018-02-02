@@ -4,52 +4,45 @@ sitemap: false
 categories:
     - meta
 ---
+{% capture current_date %}{{ site.time | date: '%s' }}{% endcapture %}
+{% capture current_year %}{{ site.time | date: '%Y' }}{% endcapture %}
+{% assign yearly_competition_count = 0 %}
+{% assign filtered_fiction = site.fiction | where_exp:"project","project.path contains current_year" %}
+{% assign completed_projects = site.data.projects | where_exp:"project","project.completed contains current_year" %}
+{% assign outstanding_projects = site.data.projects | where_exp:"project","project.completed == nil" %}
+{% assign filtered_projects = outstanding_projects | concat: completed_projects | sort: 'completed' %}
 
-An automatically updating list of the items I'm currently (claiming to be) working on. It will live here as a shaming reminder for future-me to actually complete them.
-
-{% capture today_date %}{{ site.time | date: '%s' }}{% endcapture %}
-{% capture today_year %}{{ site.time | date: '%Y' }}{% endcapture %}
+An automatically updating list of the items I'm working on in {{ current_year }}. It will live here as a shaming reminder for future-me to actually complete them.
 
 <!-- Projects published on the site -->
+{% if filtered_fiction.size > 0 %}
+{% if filtered_projects.size > 0 %}
 ### Here
+{% endif %}
 
-{% assign yearly_site_project_count = 0 %}
-{% assign yearly_competition_count = 0 %}
-
-{% if site.fiction.size > 0 %}
-  {% for story in site.fiction %}
-  {% assign story_year = story.date | date: '%Y' %}
-  {% if story_year == today_year %}
+  {% for story in filtered_fiction %}
+  - ~~_[{{ story.title }}]({{ story.link }})_, a {{ story.genre }} {{ story.type }}~~, completed in {{ story.date | date: '%B %Y' }}.
   {% if story.competition %}
   {% assign yearly_competition_count = yearly_competition_count | plus: 1 %}
-  {% else %}
-	{% assign yearly_site_project_count = yearly_site_project_count | plus: 1 %}
   {% endif %}
-  {% endif %}
-  - ~~_[{{ story.title }}]({{ story.link }})_, a {{ story.genre }} {{ story.type }}~~, completed in {{ story.date | date: '%B %Y' }}.
   {% endfor %}
-{% else %}
-  - N/A
 {% endif %}
 
 <!-- Projects not published on the site -->
+{% if filtered_projects.size > 0 %}
+{% if filtered_fiction.size > 0 %}
 ### Elsewhere
+{% endif %}
 
-{% assign sorted_projects = site.data.projects | sort: 'completed' %}
-{% assign yearly_project_count = 0 %}
-
-{% if sorted_projects.size > 0 %}
-  {% for project in sorted_projects %}
-  {% if project.completed contains today_year %}
-    {% assign yearly_project_count = yearly_project_count | plus: 1 %}
-  {% endif %}
+  {% for project in filtered_projects %}
   {% capture completion_date %}{{ project.completed | date: '%s' }}{% endcapture %}
-  {% if completion_date == "" %}{% assign completion_date = today_date %}{% endif %}
-  - {% if completion_date < today_date %}~~{% endif %}_{% if project.link %}[{{ project.title }}]({{ project.link }}){% else %}{{ project.title }}{% endif %}_, a {{ project.type }}{% if completion_date < today_date %}~~, completed in {{ project.completed | date: '%B %Y' }}{% endif %}.
+  {% if completion_date == "" %}{% assign completion_date = current_date %}{% endif %}
+  - {% if completion_date < current_date %}~~{% endif %}_{% if project.link %}[{{ project.title }}]({{ project.link }}){% else %}{{ project.title }}{% endif %}_, a {{ project.type }}{% if completion_date < current_date %}~~, completed in {{ project.completed | date: '%B' }}{% endif %}.
   {% endfor %}
 {% endif %}
 
-{% assign total_yearly_project_count = yearly_project_count | plus: yearly_competition_count %}
-
 <!-- Shame counter -->
-I have completed {{ yearly_site_project_count }} writing exercise{% if yearly_site_project_count != 1 %}s{% endif %} and {{ total_yearly_project_count }} longer-form project{% if total_yearly_project_count != 1 %}s{% endif %} so far in {{ today_year }}.
+{% assign total_yearly_project_count = completed_projects.size | plus: yearly_competition_count %}
+{% assign total_writing_exercise_count = filtered_fiction.size | minus: yearly_competition_count %}
+
+I have completed {{ total_writing_exercise_count }} writing exercise{% if total_writing_exercise_count != 1 %}s{% endif %} and {{ total_yearly_project_count }} longer-form project{% if total_yearly_project_count != 1 %}s{% endif %} so far in {{ current_year }}.
