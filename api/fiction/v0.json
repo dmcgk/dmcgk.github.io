@@ -1,0 +1,11 @@
+---
+layout: data
+permalink: /api/fiction/v0/
+redirect_from: /api/fiction/
+---
+{% assign fiction_projects = site.fiction | concat: site.data.projects %}
+{
+	"version": "0",
+	"updated": "{{ site.time | date_to_xmlschema }}",
+	"count": "{{ fiction_projects.size }}"
+}
