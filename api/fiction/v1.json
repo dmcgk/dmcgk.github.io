@@ -1,0 +1,32 @@
+---
+layout: data
+redirect_from: /api/fiction/
+permalink: /api/fiction/v1/
+---
+{% assign fiction_projects = site.fiction | concat: site.data.projects %}
+{
+	"version": "1",
+	"updated": "{{ site.time | date_to_xmlschema }}",
+	"count": "{{ fiction_projects.size }}"{% if fiction_projects.size > 0 %},
+	"stories": [ {% for story in fiction_projects %}
+		{% assign type = story.genre | default: story.type %}
+		{% assign completed = story.date | default: story.completed | date_to_xmlschema %}
+		{% assign primary_location = "" %}
+		{% if story.url %}
+			{% assign primary_location = site.url | append: story.url %}
+		{% else %}
+			{% assign primary_location = story.link %}
+		{% endif %}
+		{
+			"title": "{{ story.title }}",
+			"type": "{{ type }}"{% if completed %},
+			"completed": "{{ completed }}"{% endif %}{% if primary_location %},
+			"locations": [
+				"{{ primary_location }}"{% if story.collection == "fiction" %},
+				"{{ site.url }}{{ site.pdf_path }}{{ story.title }}.pdf",
+				"{{ site.url }}{{ site.epub_path }}{{ story.title }}.epub"
+				{% endif %}
+			]{% endif %}
+		}{% unless forloop.last %},{% endunless %}{% endfor %}
+	]{% endif %}
+}

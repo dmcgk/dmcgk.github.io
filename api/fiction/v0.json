@@ -1,7 +1,6 @@
 ---
 layout: data
 permalink: /api/fiction/v0/
-redirect_from: /api/fiction/
 ---
 {% assign fiction_projects = site.fiction | concat: site.data.projects %}
 {
