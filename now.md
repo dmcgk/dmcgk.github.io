@@ -21,7 +21,7 @@ An automatically updating list of the items I'm working on in {{ current_year }}
 {% endif %}
 
   {% for story in filtered_fiction %}
-  - ~~_[{{ story.title }}]({{ story.link }})_, a {{ story.genre }} {{ story.type }}~~, completed in {{ story.date | date: '%B' }}.
+  - ~~_[{{ story.title }}]({{ story.url }})_, a {{ story.genre }} {{ story.type }}~~, completed in {{ story.date | date: '%B' }}.
   {% if story.competition %}
   {% assign yearly_competition_count = yearly_competition_count | plus: 1 %}
   {% endif %}
