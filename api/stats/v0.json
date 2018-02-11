@@ -1,0 +1,19 @@
+---
+layout: data
+redirect_from: /api/stats/
+permalink: /api/stats/v0/
+---
+{% assign fiction_projects = site.fiction | concat: site.data.projects %}
+{
+	"version": "0",
+	"updated": "{{ site.time | date_to_xmlschema }}",
+	{% assign wordcount = 0%}
+	{% assign total_posts = site.posts | concat: site.fiction %}
+	{% for post in total_posts %}
+		{% assign rawpost = post | strip_html %}
+		{% assign post_wordcount = rawpost | number_of_words %}
+		{% assign wordcount = wordcount | plus: post_wordcount %}
+	{% endfor %}
+	"posts": "{{ total_posts.size }}",
+	"wordcount": "{{ wordcount }}"
+}
