@@ -15,8 +15,18 @@
   <section class="h-entry article-excerpt{% if post.collection %} {{ post.collection }}{% endif %}">
 {% endif %}
 
-<!-- Post date -->
+<!-- Article title -->
+{% if is_micro_post %}
 <h4>
+{% else %}
+  <h2>
+    <a href="{{ post.url }}" class="p-name">{{ post.title }}</a>
+  </h2>
+  <h4>
+    {% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}, {% endif %}{% endif %}
+{% endif %}
+
+<!-- Post date -->
   <a href="{{ post.url }}" class="u-url dt-published{% if is_micro_post %} p-name{% endif %}">{{ post.date | date: '%-d %B %Y, %H:%M' }}</a>
 
   <!-- 'Read More' placeholder & workaround for lack of Array element addition in Liquid -->
@@ -48,14 +58,6 @@
     <a href="{{ post.url }}">({{ read_more_text }})</a>
   {% endunless %}
 </h4>
-
-<!-- Article title -->
-{% unless is_micro_post %}
-  <h2>
-    <a href="{{ post.url }}" class="p-name">{{ post.title }}</a>
-  </h2>
-    {% if post.genre %}<h3>{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}</h3>{% endif %}{% endif %}
-{% endunless %}
 
 <!-- Add attribution, if present -->
 {% if post.link %}
