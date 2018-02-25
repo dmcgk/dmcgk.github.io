@@ -5,9 +5,9 @@ permalink: /api/stats/v0/
 ---
 {% assign fiction_projects = site.fiction | concat: site.data.projects %}
 {
-	"version": "0",
+	"version": 0,
 	"updated": "{{ site.time | date_to_xmlschema }}",
 	{% include wordcount.liquid %}
-	"posts": "{{ total_posts.size }}",
-	"wordcount": "{{ wordcount }}"
+	"posts": {{ total_posts.size }},
+	"wordcount": {{ wordcount }}
 }

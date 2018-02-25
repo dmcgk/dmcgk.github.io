@@ -4,7 +4,7 @@ permalink: /api/fiction/v0/
 ---
 {% assign fiction_projects = site.fiction | concat: site.data.projects %}
 {
-	"version": "0",
+	"version": 0,
 	"updated": "{{ site.time | date_to_xmlschema }}",
-	"count": "{{ fiction_projects.size }}"
+	"count": {{ fiction_projects.size }}
 }

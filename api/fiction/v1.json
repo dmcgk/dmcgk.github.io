@@ -5,9 +5,9 @@ permalink: /api/fiction/v1/
 ---
 {% assign fiction_projects = site.fiction | concat: site.data.projects %}
 {
-	"version": "1",
+	"version": 1,
 	"updated": "{{ site.time | date_to_xmlschema }}",
-	"count": "{{ fiction_projects.size }}"{% if fiction_projects.size > 0 %},
+	"count": {{ fiction_projects.size }}{% if fiction_projects.size > 0 %},
 	"stories": [ {% for story in fiction_projects %}
 		{% assign type = story.genre | default: story.type %}
 		{% assign completed = story.date | default: story.completed | date_to_xmlschema %}
