@@ -59,7 +59,7 @@ layout: compress
           {% if page.genre %}<h3>{{ page.genre | capitalize }}{% if page.type %} {{ page.type }}{% endif %}<em>{% endif %}{% if page.genre %}</em></h3>{% endif %}
         {% endif %}
         {% if page.link %}
-          <p>Via <a class="u-in-reply-to" href="{{ page.link }}" title="Source Link">{{ page.attribution }}:</a></p>
+          <p><a class="u-in-reply-to" href="{{ page.link }}" title="Source Link">{{ page.attribution }}:</a></p>
         {% endif %}
       {% endunless %}
       <!-- Workaround for kramdown wrapping inline <img> within <p> -->
