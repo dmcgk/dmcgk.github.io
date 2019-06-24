@@ -8,9 +8,13 @@
 {% assign site-colour = site.primary_colour %}
 {% assign site-font = "Source Sans Pro" %}
 {% assign site-font-code = "Source Code Pro" %}
-{% assign site-font-web-regular = "https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlJbPFduIYtoLzwST68uhz_Y.woff2" %}
-{% assign site-font-web-bold = "https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGJkF8H8ye47wsfpWywda8og.woff2" %}
-{% assign site-font-web-code = "https://fonts.gstatic.com/s/sourcecodepro/v6/mrl8jkM18OlOQN8JLgasD5bPFduIYtoLzwST68uhz_Y.woff2" %}
+{% assign site-font-fiction = "Source Serif Pro" %}
+{% assign site-font-web-regular = "https://use.typekit.net/af/be76d4/00000000000000003b9b3129/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3" %}
+{% assign site-font-web-bold = "https://use.typekit.net/af/de34bd/00000000000000003b9b312d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3" %}
+{% assign site-font-web-italic = "https://use.typekit.net/af/35658c/00000000000000003b9b312a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3" %}
+{% assign site-font-web-code = "https://use.typekit.net/af/3c21b3/0000000000000000000179cf/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3" %}
+{% assign site-font-web-fiction = "https://use.typekit.net/af/aa546d/00000000000000003b9b3a87/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3" %}
+{% assign site-font-web-fiction-italic = "https://use.typekit.net/af/190e58/00000000000000003b9b3a88/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3" %}
 {% assign site-small = "42rem" %}
 {% assign site-medium = "48rem" %}
 {% assign site-large = "64rem" %}
@@ -35,10 +39,31 @@
 }
 
 @font-face {
+  font-family: '{{ site-font }}';
+  font-style: italic;
+  font-weight: 400;
+  src: local('{{ site-font }} Italic'), local('{{ site-font | replace: ' ', '' }}-Italic'), url({{ site-font-web-italic }}) format('woff2');
+}
+
+@font-face {
   font-family: '{{ site-font-code }}';
   font-style: normal;
   font-weight: 400;
   src: local('{{ site-font-code }}'), local('{{ site-font-code | replace: ' ', '' }}-Regular'), url({{ site-font-web-code }}) format('woff2');
+}
+
+@font-face {
+  font-family: '{{ site-font-fiction }}';
+  font-style: normal;
+  font-weight: 400;
+  src: local('{{ site-font-fiction }}'), local('{{ site-font-fiction | replace: ' ', '' }}-Regular'), url({{ site-font-web-fiction }}) format('woff2');
+}
+
+@font-face {
+  font-family: '{{ site-font-fiction }}';
+  font-style: italic;
+  font-weight: 400;
+  src: local('{{ site-font-fiction }} Italic'), local('{{ site-font-fiction | replace: ' ', '' }}-Italic'), url({{ site-font-web-fiction-italic }}) format('woff2');
 }
 
 /* Functions */
@@ -256,8 +281,8 @@ ul li {
 
 .fiction p {
   margin: 1rem auto 0 auto;
-  line-height: 1.6;
   max-width: {{ fiction-inset }};
+  font-family: {{ site-font-fiction }}, serif; 
 }
 
 .fiction > p + p {
@@ -292,6 +317,11 @@ a.navigation-element:hover, header a:hover {
   font-weight: bold;
 }
 
+#site-title {
+
+  font-size: 5rem;
+}
+
 /* Responsive Overrides */
 
 @include respond-to({{ site-large }}) {
@@ -315,6 +345,10 @@ a.navigation-element:hover, header a:hover {
 }
 
 @include respond-to({{ site-small }}) {
+
+  #site-title {
+    font-size: 3rem;
+  }
 
   body {
     font-size: 1rem;
