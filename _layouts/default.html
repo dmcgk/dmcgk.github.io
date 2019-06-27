@@ -38,7 +38,7 @@ layout: compress
   <body>
       {% if page.layout == "index" %}
       <header>
-        <h2><a id="site-title" class="h-card u-url" href="/">ᖘ̥</a></h2>
+        <h2><a id="site-title" class="h-card u-url" href="/">{% include logo.svg %}</a></h2>
         {% if site.data.navigation.size > 0 %}
         <nav>
           {% for nav_item in site.data.navigation %}
@@ -78,7 +78,7 @@ layout: compress
             {% include paginate.html %}
           {% endunless %}
         {% else %}
-          {% unless page.categories contains 'aggregated' %}&nbsp;{% if page.collection == "fiction" %}<a href="{{ site.epub_path }}{{ page.title }}.epub" title="ePub">{% include document.svg %}</a>&nbsp;{% endif %}<a href="{{ site.markdown_url }}{{ site.github.repository_nwo }}/master/{{ page.path }}" title="Markdown (Plain Text)">{% include markdown.svg %}</a>{% if page.collection == "fiction" %}&nbsp;<a href="{{ site.pdf_path }}{{ page.title }}.pdf" title="PDF">{% include document-inverted.svg %}</a>{% endif %}{% endunless %}<br />
+          {% unless page.categories contains 'aggregated' %}&nbsp;{% if page.collection == "fiction" and page.nodocumentlinks != true %}<a href="{{ site.epub_path }}{{ page.title }}.epub" title="ePub">epub</a>{{ site.spacer }}{% endif %}<a href="{{ site.markdown_url }}{{ site.github.repository_nwo }}/master/{{ page.path }}" title="Markdown (Plain Text)">m<small>↓</small></a>{% if page.collection == "fiction" and page.nodocumentlinks != true %}{{ site.spacer }}<a href="{{ site.pdf_path }}{{ page.title }}.pdf" title="PDF">pdf</a>{% endif %}{% endunless %}<br />
         {% endif %}
         &copy;&nbsp;{{ site.time | date: '%Y' }}
       </p>
