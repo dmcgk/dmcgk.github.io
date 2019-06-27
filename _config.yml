@@ -11,9 +11,14 @@ key_fingerprint: 6391E804
 key_path: /keys/6391E804.txt
 key_path_friendly: /publickey/
 
-# Layout
+# Styling
 spacer: "&nbsp;&middot;&nbsp;"
-primary_colour: crimson;
+primary_text: "black;"
+primary_accent: "crimson;"
+primary_background: "white;"
+secondary_text: "white;"
+secondary_accent: "#14DBB3;"
+secondary_background: "#191919;"
 
 # Organisation
 collections:

@@ -5,12 +5,16 @@
 
 /* Variables */
 
-{% assign site-colour = site.primary_colour %}
+{% assign site-text-light = site.primary_text %}
+{% assign site-accent-light = site.primary_accent %}
+{% assign site-background-light = site.primary_background %}
+{% assign site-text-dark = site.secondary_text %}
+{% assign site-accent-dark = site.secondary_accent %}
+{% assign site-background-dark = site.secondary_background %}
 {% assign site-font = "Source Sans Pro" %}
 {% assign site-font-code = "Source Code Pro" %}
 {% assign site-font-fiction = "Source Serif Pro" %}
 {% assign site-font-web-regular = "https://use.typekit.net/af/be76d4/00000000000000003b9b3129/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3" %}
-{% assign site-font-web-bold = "https://use.typekit.net/af/de34bd/00000000000000003b9b312d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3" %}
 {% assign site-font-web-italic = "https://use.typekit.net/af/35658c/00000000000000003b9b312a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3" %}
 {% assign site-font-web-code = "https://use.typekit.net/af/3c21b3/0000000000000000000179cf/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3" %}
 {% assign site-font-web-fiction = "https://use.typekit.net/af/aa546d/00000000000000003b9b3a87/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3" %}
@@ -29,13 +33,6 @@
   font-style: normal;
   font-weight: 400;
   src: local('{{ site-font }}'), local('{{ site-font | replace: ' ', '' }}-Regular'), url({{ site-font-web-regular }}) format('woff2');
-}
-
-@font-face {
-  font-family: '{{ site-font }}';
-  font-style: normal;
-  font-weight: 700;
-  src: local('{{ site-font }} Bold'), local('{{ site-font | replace: ' ', '' }}-Bold'), url({{ site-font-web-bold }}) format('woff2');
 }
 
 @font-face {
@@ -86,9 +83,12 @@
 
 @include headings-all(){
   text-align: left;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.3;
-  color: {{ site-colour }};
+  color: {{ site-accent-light }}
+  @media (prefers-color-scheme: dark) {
+    color: {{ site-accent-dark }}
+  }
   @extend %headings !optional;
 }
 
@@ -97,11 +97,17 @@ html {
 }
 
 body { 
-  color: black; 
+  color: {{ site-text-light }};
+  background-color: {{ site-background-light }};
+  @media (prefers-color-scheme: dark) {
+    color: {{ site-text-dark }};
+    background-color: {{ site-background-dark }};
+  }
   padding: 0; 
   line-height: 1.5;
   font-size: 1.2rem;
   font-family: {{ site-font }}, sans-serif; 
+  font-variant: common-ligatures oldstyle-nums proportional-nums;
   text-align: justify;
   margin-left: auto;
   margin-right: auto;
@@ -123,6 +129,15 @@ p + .tagline {
   margin-top: 1rem;
 }
 
+em {
+  font-style: italic;
+}
+
+strong, footer {
+  font-variant: small-caps oldstyle-nums proportional-nums;
+  font-weight: 400;
+}
+
 pre { 
   word-wrap: normal; 
   padding: 2rem 1rem;
@@ -134,7 +149,7 @@ pre, code {
 }
 
 header svg {
-  height: 4rem;
+  height: 8rem;
 }
 
 header %headings, footer { 
@@ -147,15 +162,18 @@ footer {
   bottom: 0;
   right: 0;
   left: 0;
-  pointer-events: none;
+  font-size: smaller;
 }
 
-footer a {
-  pointer-events: all;
+footer a, .tagline a, .tagline time {
+  margin: 0 0.2rem;
 }
 
 a {
-	color: {{ site-colour }};
+  color: {{ site-accent-light }}
+  @media (prefers-color-scheme: dark) {
+    color: {{ site-accent-dark }}
+  }
   text-decoration: none;
 }
 
@@ -178,10 +196,10 @@ img {
 }
 
 svg {
-  width: auto;
-  height: 1rem;
-  vertical-align: middle;
-  fill: crimson;
+  fill: {{ site-accent-light }}
+  @media (prefers-color-scheme: dark) {
+    fill: {{ site-accent-dark }}
+  }
 }
 
 figcaption {
@@ -216,7 +234,10 @@ blockquote, .micro-excerpt > :not(img) {
   margin: 0 auto;
   border-style: solid;
   border-width: 0px 0px 0px 6px;
-  border-color: {{ site-colour }};
+  border-color: {{ site-accent-light }}
+  @media (prefers-color-scheme: dark) {
+    border-color: {{ site-accent-dark }}
+  }
 }
 
 article {
@@ -283,6 +304,7 @@ ul li {
   margin: 1rem auto 0 auto;
   max-width: {{ fiction-inset }};
   font-family: {{ site-font-fiction }}, serif; 
+  font-variant: common-ligatures oldstyle-nums proportional-nums;
 }
 
 .fiction > p + p {
@@ -304,9 +326,13 @@ ul li {
   text-align: right;
 }
 
+article h1 {
+  position: relative;
+}
+
 .navigation-element {
-  display: inline;
-  margin-right: 0.5rem;
+  position: absolute;
+  left: 0.5rem;
 }
 
 a.navigation-element:hover, header a:hover {
@@ -314,11 +340,10 @@ a.navigation-element:hover, header a:hover {
 }
 
 #genre {
-  font-weight: bold;
+  font-variant: small-caps;
 }
 
 #site-title {
-
   font-size: 5rem;
 }
 
@@ -355,7 +380,7 @@ a.navigation-element:hover, header a:hover {
   }
 
   header svg {
-    height: 3rem;
+    height: 4rem;
   }
 
   section > :not(img), article > :not(img){
@@ -381,5 +406,4 @@ a.navigation-element:hover, header a:hover {
   .micro-excerpt > :first-child, .article-excerpt > :first-child {
     padding: 1rem 0 0 0;
   }
-
 }
