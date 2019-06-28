@@ -22,7 +22,7 @@ permalink: /api/fiction/v1/
 			"type": "{{ type }}"{% if completed %},
 			"completed": "{{ completed }}"{% endif %}{% if primary_location %},
 			"locations": [
-				"{{ primary_location }}"{% if story.collection == "fiction" %},
+				"{{ primary_location }}"{% if story.collection == "fiction" and page.nodocumentlinks != true %},
 				"{{ site.url }}{{ site.pdf_path }}{{ story.title }}.pdf",
 				"{{ site.url }}{{ site.epub_path }}{{ story.title }}.epub"
 				{% endif %}

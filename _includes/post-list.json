@@ -33,7 +33,7 @@
     "banner_image": "{{ site.url }}{{ post.banner }}",
     {% endif %}
     "date_published": "{{ post.date | date_to_xmlschema }}"
-    {% if post.collection == "fiction" %}
+    {% if post.collection == "fiction" and page.nodocumentlinks != true %}
     , "attachments": [
         {
             "url": "{{ site.url }}{{ site.epub_path }}{{ post.title }}.epub",
