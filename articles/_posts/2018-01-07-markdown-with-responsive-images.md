@@ -8,7 +8,7 @@ Since I only need to do this part once it can be as complex and edge-casey as I 
 
 This works since I don't care about in-article image positioning. I'll either be sharing a single image or adding a single set of explanatory/descriptive images to the end of a post, rather than writing a print-style article with a strictly defined layout. 
 
-For example, this Markdown+YAML file:
+For example, this Markdown+**yaml** file:
 
 ~~~ yaml
 ---
