@@ -8,11 +8,22 @@ layout: index
 
 {% for post in posts_and_collections %}
 	{% assign post_year = post.date | date: "%Y" %}
+	{% assign post_month = post.date | date: "%m" %}
+	{% assign unique_date = post.date | date: "%Y-%m-%d" %}
 	{% if post_year != current_year %}
 		{% assign current_year = post_year %}
-		<section id="{{ current_year }}"><h1>{{ current_year }}</h1></section>
+		{% unless forloop.first %}</section>{% endunless %}<section id="{{ current_year }}">
+		<h1>{{ current_year }}</h1>
 	{% endif %}
-	<section class="h-entry archive-excerpt">
-	  <p>{% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}{% endif %}: <em>{% endif %}<a class="u-url p-name" href="{{ post.url }}">{{ post.title }}</a>{% if post.genre %}</em>{% endif %}, posted <span class="dt-published">{{ post.date | date: '%-d %B, %Y' }}</span>.</p>
-	</section>
+	{% unless post_month %}
+		{% assign current_month = post_month %}
+		<div id="{{ current_year }}-{{ current_month }}">
+	{% endunless %}
+	{% if post_month != current_month %}
+		{% assign current_month = post_month %}
+		</div><div id="{{ current_year }}-{{ current_month }}">
+	{% endif %}
+	<p {% if unique_date != current_unique_date %}{% assign current_unique_date = unique_date %} id="{{ current_unique_date }}" {% endif %} class="h-entry archive-excerpt">
+	  {% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}{% endif %}: <em>{% endif %}<a class="u-url p-name" href="{{ post.url }}">{{ post.title }}</a>{% if post.genre %}</em>{% endif %}, posted <span class="dt-published">{{ post.date | date: '%-d %B, %Y' }}</span>.</p>
+	  {% if forloop.last %}</div></section>{% endif %}
 {% endfor %}

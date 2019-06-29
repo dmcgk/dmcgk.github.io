@@ -50,13 +50,13 @@ layout: compress
       </header>
       {% endif %}
       {% unless page.layout == "index" %}
-        {% assign display_date = page.date | default: site.time %}
+        {% assign display_date = page.date %}
         <article class="e-content{% if is_micro_post %} p-name{% endif %}{% if page.collection %} {{ page.collection }}{% endif %}">
         {% if is_micro_post %}
-          <h1><a class="navigation-element" href="/">❬</a><a href="{{ page.url }}" class="u-url dt-published">{{ display_date | date: '%-d %B %Y, %H:%M' }}</a></h1>
+          <h1><a class="navigation-element" href="/archive/#{{ display_date | date: '%Y-%m-%d' }}">❬</a><a href="{{ page.url }}" class="u-url dt-published">{{ display_date | date: '%-d %B %Y, %H:%M' }}</a></h1>
         {% else %}
-          <h1><a class="navigation-element" href="/">❬</a><a class="u-url" href="{{ page.url }}">{{ page.title }}</a></h1>
-          {% if page.genre %}<h3>{{ page.genre | capitalize }}{% if page.type %} {{ page.type }}{% endif %}<em>{% endif %}{% if page.genre %}</em></h3>{% endif %}
+          <h1><a class="navigation-element" href="/archive/#{{ display_date | date: '%Y-%m-%d' }}">❬</a><a class="u-url" href="{{ page.url }}">{{ page.title }}</a></h1>
+          {% if page.genre %}<h3>{{ page.genre | capitalize }}{% if page.type %} {{ page.type }}{% endif %}<em>{% endif %}{% if page.genre %}</em>{% if page.serial %}: <em><a href="/fiction/{{ page.serial | replace: ' ', '-' | downcase }}">{{ page.serial }}</a></em>{% endif %}{% if page.status %} ({{ page.status }}){% endif %}</h3>{% endif %}
         {% endif %}
         {% if page.link %}
           <p><a class="u-in-reply-to" href="{{ page.link }}" title="Source Link">{{ page.attribution }}:</a></p>
@@ -68,7 +68,7 @@ layout: compress
       {% unless page.layout == "index" %}
         {% include images.html %}
         {% unless page.categories contains "meta" %}
-        <h4 class="tagline h-card"><span class="p-author p-nickname">@{{ author.twitter }}</span>{{ site.spacer }}<a href="{{ site.url }}">{{ site.long_title }}</a>{% unless is_micro_post %}{{ site.spacer }}<time class="dt-published" datetime="{{ display_date | date_to_xmlschema }}">{{ display_date | date: '%Y-%m-%d' }}</time>{% endunless %}</h4>{% if page.prompt %}<h4 class="tagline"><a href="/random/"><em>{{ page.prompt }}{% endif %}</em></a></h4>{% if page.competition %}<h4 class="tagline"><a href="{{ page.source }}">{{ page.competition }}</a></h4>{% endif %}{% endunless %}
+        <h4 class="tagline h-card"><span class="p-author p-nickname">@{{ author.twitter }}</span>{{ site.spacer }}<a href="{{ site.url }}">{{ site.long_title }}</a>{% unless is_micro_post %}{{ site.spacer }}{% if display_date %}<time class="dt-published" datetime="{{ display_date | date_to_xmlschema }}"><a href="/archive/#{{ display_date | date: '%Y' }}">{{ display_date | date: '%Y' }}</a>/<a href="/archive/#{{ display_date | date: '%Y-%m' }}">{{ display_date | date: '%m' }}</a>/<a href="/archive/#{{ display_date | date: '%Y-%m-%d' }}">{{ display_date | date: '%d' }}</a></time>{% endif %}{% endunless %}</h4>{% if page.prompt %}<h4 class="tagline"><a href="/random/"><em>{{ page.prompt }}{% endif %}</em></a></h4>{% if page.competition %}<h4 class="tagline"><a href="{{ page.source }}">{{ page.competition }}</a></h4>{% endif %}{% endunless %}
         </article>
       {% endunless %}
     <footer>
