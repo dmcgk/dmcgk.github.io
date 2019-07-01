@@ -53,9 +53,9 @@ layout: compress
         {% assign display_date = page.date %}
         <article class="e-content{% if is_micro_post %} p-name{% endif %}{% if page.collection %} {{ page.collection }}{% endif %}">
         {% if is_micro_post %}
-          <h1><a class="navigation-element" href="/archive/#{{ display_date | date: '%Y-%m-%d' }}">❬</a><a href="{{ page.url }}" class="u-url dt-published">{{ display_date | date: '%-d %B %Y, %H:%M' }}</a></h1>
+          <h1><a class="navigation-element" href={% if page.categories contains 'meta' %}"/{% else %}"/archive/#{{ display_date | date: '%Y-%m-%d' }}{% endif %}">❬</a><a href="{{ page.url }}" class="u-url dt-published">{{ display_date | date: '%-d %B %Y, %H:%M' }}</a></h1>
         {% else %}
-          <h1><a class="navigation-element" href={% if page.categories contains 'meta' %}"/"{% else %}"/archive/#{{ display_date | date: '%Y-%m-%d' }}{% endif %}">❬</a><a class="u-url" href="{{ page.url }}">{{ page.title }}</a></h1>
+          <h1><a class="navigation-element" href={% if page.categories contains 'meta' %}"/{% else %}"/archive/#{{ display_date | date: '%Y-%m-%d' }}{% endif %}">❬</a><a class="u-url" href="{{ page.url }}">{{ page.title }}</a></h1>
           {% if page.genre %}<h3>{{ page.genre | capitalize }}{% if page.type %} {{ page.type }}{% endif %}<em>{% endif %}{% if page.genre %}</em>{% if page.serial %}: <em><a href="/fiction/{{ page.serial | replace: ' ', '-' | downcase }}">{{ page.serial }}</a></em>{% endif %}{% if page.status %} ({{ page.status }}){% endif %}</h3>{% endif %}
         {% endif %}
         {% if page.link %}

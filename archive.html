@@ -12,7 +12,7 @@ layout: index
 	{% assign unique_date = post.date | date: "%Y-%m-%d" %}
 	{% if post_year != current_year %}
 		{% assign current_year = post_year %}
-		{% unless forloop.first %}</section>{% endunless %}<section id="{{ current_year }}">
+		{% unless forloop.first %}</div></section>{% assign skip_month_closer = true %}{% endunless %}<section id="{{ current_year }}">
 		<h1>{{ current_year }}</h1>
 	{% endif %}
 	{% unless post_month %}
@@ -21,7 +21,7 @@ layout: index
 	{% endunless %}
 	{% if post_month != current_month %}
 		{% assign current_month = post_month %}
-		</div><div id="{{ current_year }}-{{ current_month }}">
+		{% unless forloop.first %}{% unless skip_month_closer %}</div>{% endunless %}{% endunless %}<div id="{{ current_year }}-{{ current_month }}">{% assign skip_month_closer = false %}
 	{% endif %}
 	<p {% if unique_date != current_unique_date %}{% assign current_unique_date = unique_date %} id="{{ current_unique_date }}" {% endif %} class="h-entry archive-excerpt">
 	  {% if post.genre %}{{ post.genre | capitalize }}{% if post.type %} {{ post.type }}{% endif %}: <em>{% endif %}<a class="u-url p-name" href="{{ post.url }}">{{ post.title }}</a>{% if post.genre %}</em>{% endif %}, posted <span class="dt-published">{{ post.date | date: '%-d %B, %Y' }}</span>.</p>
