@@ -8,4 +8,4 @@ categories:
 
 {% include wordcount.liquid %}
 
-There are {{ total_posts.size }} posts on [{{ site.long_title }}](/), totalling {{ wordcount }} words.
+There are [{{ total_posts.size }} posts](/archive/) on [{{ site.long_title }}](/), totalling {{ wordcount }} words.

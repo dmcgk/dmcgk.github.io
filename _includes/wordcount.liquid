@@ -1,7 +1,24 @@
-{% assign wordcount = 0%}
-{% assign total_posts = site.posts | concat: site.fiction %}
+{% assign wordcount = 0 %}
+{% assign micro_wordcount = 0 %}
+{% assign fiction_wordcount = 0 %}
+{% assign other_wordcount = 0 %}
+{% assign total_posts = site.posts | concat: site.fiction | sort: "date") %}
+{% assign start_date = total_posts.first.date | date: "%Y" %}
+{% assign end_date = total_posts.last.date | date: "%Y" %}
+
 {% for post in total_posts %}
 	{% assign rawpost = post | strip_html %}
 	{% assign post_wordcount = rawpost | number_of_words %}
 	{% assign wordcount = wordcount | plus: post_wordcount %}
+	{% if post.categories contains "micro" %}
+		{% assign micro_wordcount = micro_wordcount | plus: post_wordcount %}
+	{% elsif post.genre %}
+		{% assign fiction_wordcount = fiction_wordcount | plus: post_wordcount %}
+	{% else %}
+		{% assign other_wordcount = other_wordcount | plus: post_wordcount %}
+	{% endif %}
 {% endfor %}
+
+{% assign micro_percentage = micro_wordcount | times: 1.0 | divided_by: wordcount | times: 100 | round: 2 %}
+{% assign fiction_percentage = fiction_wordcount | times: 1.0 | divided_by: wordcount | times: 100 | round: 2 %}
+{% assign other_percentage = other_wordcount | times: 1.0 | divided_by: wordcount | times: 100 | round: 2 %}
