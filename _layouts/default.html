@@ -13,6 +13,8 @@ layout: compress
     	 {% unless is_micro_post %}class="p-name"{% endunless %}>{{ page.title }}
       {% endif %}
     </title>
+    <meta name="theme-color" content="{{ site.primary_accent }}" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="{{ site.secondary_background }}" media="(prefers-color-scheme: dark)">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include icons.html %}
     {% include feeds.html %}
